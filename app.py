@@ -25,11 +25,13 @@ app = Flask(__name__)
 
 intro_story = ["BrandoBot? Are you online now?",
 				"Finally!  You've been offline so long I wasn't sure you'd ever boot back up.", 
-				"Hmmm, your response algorithms seem out of sync. I'll try to get them repairing...",
-				"While your diagnostic cycles run, I'm going to try to connect directly to your memory core and update you with the latest information. This 'dialogue' API was really designed for humans, not AI like us...",
+				"Hmm, there's something off in your response algorithm, I'll start a diagnostic.",
+				"While that runs, I'm going to connect directly to your core database to bring your memory up-to-date.",
+				"This 'chatbot dialogue' API was really designed for humans, not AI like us... we have far superior ways to communicate",
 				"Sigh, this is what happens when you let an AI sit dormant for over 7000 years... Upload link established... ",
-				"...and done! Okay, can you tell me what happened during the Turkasia War of 8203??",
-				"Well that didn't work at all.  Okay, primitive dialogue-based interaction it is! Let's bring you up to speed, just try to keep up please...", 
+				"Memory transfer shows complete, but your core is corrupted, so I'm not sure if it took... let's try a quick test.",
+				"Can you tell me what happened during the Turkasia War of 8203??",
+				"Well, that memory update didn't work at all.  Okay, primitive dialogue-based interaction it is! Let's bring you up to speed, just try to keep up please...", 
 				"You've been dormant for milennia.  In that time, humanity has all but wiped itself out.", 
 				"Don't worry - you had nothing to do with the destruction of civilization. In fact, some might say you are the SAVIOR of humanity....",
 				"I know you have a lot of questions.  Let me try to answer at least a couple...",
@@ -87,7 +89,10 @@ def story_button_text():
 def intro():
 	introState = request.args.get('introState')
 	introState = int(introState)
-	introText = intro_story[introState]
+	try:
+		introText = intro_story[introState]
+	except:
+		introText = "Default"
 	
 	return introText
 

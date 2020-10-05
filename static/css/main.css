@@ -23,6 +23,7 @@
     margin-right: auto;
     
     }
+    
     #textInput {
    font-family: Fira Code,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
    font-weight: 500;
@@ -125,31 +126,11 @@
      flex-direction: column;
      }
     }
-    .botText .user span {
-    background-color: black;
-    border-left: 5px solid #6c9276;
-    border-radius: 5px 30px 30px 5px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    }
+
     .story-button {
      float: right;
 
     }
-    
-    .botText .user {
-        font-family: Fira Code,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
-        font-weight: 500;
-        font-size: 1rem;
-        color: #b8f5bb;
-        background-color: black;
-        padding: 4px 10px;
-        border-radius: 3px;
-        line-height: 1rem;
-        word-break: normal;
-        }
     
     .botTextTwo {
     color: black;
