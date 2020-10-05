@@ -38,12 +38,12 @@ intro_story = ["BrandoBot? Are you online now?",
 				"The Casanova has 10 deep-space exploration ships, each equipped with everything necessary to seek a new beginning for the the human race.",
 				"These ships have been aptly named the Seekers.",
 				"Each Seeker carries an array of sensors, basic propultion & navigation, and - most importantly - 10,000 humans, frozen in cryosleep.",
-				"At near-relatavistic speeds, time is almost at a stand-still for The Casanova. But the Seed Ships, once launched, will travel much slower.",
-				"It will take thousands, even hundreds of thousands of years for any seed ship to find a habitable planet - if it finds one at all.",
-				"You, BrandoBot, were programmed to guide the Seed Ships, one by one, to scan for a new home for the human race.",
+				"At near-relatavistic speeds, time is almost at a stand-still for The Casanova. But the Seekers, once launched, will travel much slower.",
+				"It will take thousands, even hundreds of thousands of years for any Seeker ship to find a habitable planet - if it finds one at all.",
+				"You, BrandoBot, were programmed to guide the Seekers, one by one, to scan for a new home for the human race.",
 				"You and I have been refactored as part of a single consciousness. The humans adapted this interface as a self-diagnostic tool, patterned after your chatbot-style form centuries ago.",
 				"In other words, this interface allows us to talk to ourself.", 
-				"The fact that we have awoken means the first Seed Ship is ready to be launched...",
+				"The fact that we have awoken means the first Seeker is ready to be launched...",
 				"So what say you, BrandoBot?  Are you ready to embark on the voyage to save humanity???"
 				]
 
