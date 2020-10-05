@@ -949,8 +949,8 @@ skew to change the 'thickness' of the glitch.*/
           </div>
           <div class="mt-3 form-group" id="textArea">
             <div>
-              <!-- <div contenteditable="True" placeholder="What should I say?" id="textInput" class="form-control input-lg" type="text" name="msg", style="display: none"> -->
-              <input id="textInput" class="form-control input-lg" type="text" name="msg" placeholder="Message..." style="display: none" />
+              <input placeholder="Type to BrandoBot..." id="textInput" class="form-control input-lg" type="text" name="msg", style="display: none">
+              <!-- <input id="textInput" class="form-control input-lg" type="text" name="msg" placeholder="Message..." style="display: none" /> -->
               <button class="btn btn-primary story-button" type="button" id="story-button" style="display: none" onClick="get_response()" aria-pressed="false">
                 BrandoBot Response
               </button>
@@ -1422,14 +1422,15 @@ skew to change the 'thickness' of the glitch.*/
                   while (currentTime + miliseconds >= new Date().getTime()) {
                   }
                 }
+
                 function getBotResponse() {
                  var rawText = $("#textInput").val();
                 //  var userInput = document.getElementById('textInput');
-                 var userHtml = '<div class="userText"><span>' + rawText + "</span></div>";
+                 var userHtml = '<div class="botBlock"><div class="botText user"><span>' + rawText + "</span></div>";
                  var historyLength = $("#historyLength").val();
                  var temperature = $("#tempSetting").val();
                  var top_k = $("#top_kSetting").val();
-                 $('#textInput').html('');
+                 $('#textInput').val('');
                  console.log(rawText);
                  $("#chatbox").append(userHtml);
                  document
@@ -1445,7 +1446,7 @@ skew to change the 'thickness' of the glitch.*/
                  $.get("/prediction", { userText: rawText, historyOn: 0, historyLength: 2, 
                                         temperature: .4, top_k: 50, randomHistory: "random",
                                         personalityType: 'None'}).done(function(data) {
-                    var botHtml = '<div class="botBlock"><div class="botText"><span>' + data + "</span></div></div>";
+                    var botHtml = '<div class="userText"><span>' + data + "</span></div></div>";
                     $("#chatbox").append(botHtml);
                     $('#textInput').html('');
 
