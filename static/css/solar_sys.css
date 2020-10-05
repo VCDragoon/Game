@@ -1440,7 +1440,7 @@ h1 {
   #universe {
     font-size: 58%; } }
 /* @media screen and (min-width: 1000px) {
-  /* #universe {
+  #universe {
     font-size: 73%; }
 
   #navbar, #controls, #data {
@@ -1474,13 +1474,10 @@ h1 {
     left: 0px; }
 
   .controls-open #controls, .controls-close #controls {
-    right: 0px; } } */
-  }
+    right: 0px; } }
 @media screen and (min-width: 1300px) {
-  /* #universe {
-    font-size: 100%; }  */
-  }
+  #universe {
+    font-size: 100%; } }
 @media screen and (min-width: 1600px) {
-  /* .zoom-close .scale-d #solar-system {
-    margin-left: -120%; }  */
-  } */
+  .zoom-close .scale-d #solar-system {
+    margin-left: -120%; } } */
