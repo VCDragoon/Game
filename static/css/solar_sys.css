@@ -1439,7 +1439,7 @@ h1 {
 @media screen and (min-width: 760px) {
   #universe {
     font-size: 58%; } }
-@media screen and (min-width: 1000px) {
+/* @media screen and (min-width: 1000px) {
   /* #universe {
     font-size: 73%; }
 
@@ -1483,4 +1483,4 @@ h1 {
 @media screen and (min-width: 1600px) {
   /* .zoom-close .scale-d #solar-system {
     margin-left: -120%; }  */
-  }
+  } */
