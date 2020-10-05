@@ -394,5 +394,14 @@ def top_k_top_p_filtering(logits, top_k, top_p=1, filter_value=-float('Inf')):
 	return logits
 #---------------------------------------------------------------------------------------#
 
+# Auto redirect http to https ONCE SSL CERT IS VERIFIED BY HOSTGATOR
+# @app.before_request
+# def before_request():
+#     if request.url.startswith('http://'):
+#         return redirect(request.url.replace('http://', 'https://'), code=301)
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port='80', ssl_context=('/etc/letsencrypt/live/brandobot.com/fullchain.pem', '/etc/letsencrypt/live/brandobot.com/privkey.pem'))
+    app.run(host='0.0.0.0', port='80')
+
+# DISABLING SSL UNTIL HOSTGATOR VERIFIES
+# , ssl_context=('/etc/letsencrypt/live/brandobot.com/fullchain.pem', '/etc/letsencrypt/live/brandobot.com/privkey.pem'))
