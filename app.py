@@ -395,4 +395,4 @@ def top_k_top_p_filtering(logits, top_k, top_p=1, filter_value=-float('Inf')):
 #---------------------------------------------------------------------------------------#
 
 if __name__ == "__main__":
-    app.run(ssl_context='adhoc')
+    app.run(host='0.0.0.0', port='80', ssl_context='adhoc')
