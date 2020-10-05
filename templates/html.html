@@ -1349,7 +1349,7 @@ skew to change the 'thickness' of the glitch.*/
                         document
                         .getElementById("chatbox")
                         .scrollIntoView({ block: "end", behavior: "smooth" });
-                    $.get("/prediction", { userText: rawText + " " + currentBotText, historyOn: true, historyLength: 2, 
+                    $.get("/prediction", { userText: rawText + " " + currentBotText, historyOn: false, historyLength: 2, 
                                             temperature: .4, top_k: 50, randomHistory: "random",
                                             personalityType: 'None'}).done(function(data) {
                         
