@@ -79,7 +79,7 @@ def story_button_text():
 	try: 
 		storyButtonText = intro_story_button[storyButtonCounter]
 	except:
-		storyButtonText = "Default"
+		storyButtonText = "This is odd... I'm detecting a third conscious being in our program..."
 
 	return storyButtonText
 
@@ -92,7 +92,7 @@ def intro():
 	try:
 		introText = intro_story[introState]
 	except:
-		introText = "Default"
+		introText = "This is odd... I'm detecting a third conscious being in our program..."
 	
 	return introText
 
