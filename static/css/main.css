@@ -46,7 +46,7 @@
     font-size: 1rem;
     line-height: 1rem;
     word-break: break-word;
-    text-align: left;
+    text-align: justify;
     color: #d0cce4;
     border-bottom: 1px solid #726c92;
     display:flex;
@@ -60,7 +60,7 @@
     font-size: 1rem;
     line-height: 1rem;
     word-break: break-word;
-    text-align: left;
+    text-align: justify;
     color: #a8cefa;
     border-bottom: 1px solid #287ddf;
     display:flex;
@@ -75,7 +75,7 @@
     font-size: 1rem;
     line-height: 1rem;
     word-break: break-word;
-    text-align: left;
+    text-align: justify;
     color: #cbf7cd;
     border-bottom: 1px solid #6c9276;
     display:flex;
@@ -93,14 +93,14 @@
 
 .userTextInput {
 
-    text-align: right;
+    text-align: justify;
     flex: 2;
     min-width: 0;
     margin-left:10%
     }
 
 .aitext {
-    text-align: right;
+    text-align: justify;
     flex: 2;
     min-width: 0;
     margin-left:10%
@@ -108,7 +108,7 @@
 
 
 .botText {
-    text-align: right;
+    text-align: justify;
     flex: 2;
     min-width: 0;
     margin-left:10%

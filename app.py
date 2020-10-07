@@ -189,7 +189,7 @@ num_history_messages = 5
 therapist = ['As a therapist', 'Psychologically', 'Counseling Session', 'projecting emotions', 'I would advise you to' 
 				'work on mental health', 'very worried about mental well being', 'work through these emotions', 'never hurt yourself']
 
-jerk = ['you suck', 'f off', 'bitch', 'fatty', 'bite me', 'screw you']
+jerk = ['you suck']
 
 noMemory = []
 personality = []
@@ -251,7 +251,7 @@ def web_reply():
 
 	response = prediction(userText, historyToggle, historyLength, temperature, top_k, randomHistory, personality)
 	filterResponses = ['/u', 'sub', '/r', 'reddit', ' r ', ' u ', 'upvote', 'downvote', 'up vote', 'down vote',
-						'ban', 'mod', 'moderator', 'OP', 'thread', 'post']
+						'ban', 'mod', 'moderator', 'OP', 'thread', 'post', 'subreddit']
 	filterCheck = [thing for thing in filterResponses if(thing in response)]
 	while filterCheck=='True':
 		response = prediction(userText, historyToggle, historyLength, temperature, top_k, randomHistory, personality)
@@ -419,7 +419,7 @@ def top_k_top_p_filtering(logits, top_k, top_p=1, filter_value=-float('Inf')):
 #         return redirect(request.url.replace('http://', 'https://'), code=301)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port='80')
+    app.run(port='8000')
 
 # DISABLING SSL UNTIL HOSTGATOR VERIFIES
 # , ssl_context=('/etc/letsencrypt/live/brandobot.com/fullchain.pem', '/etc/letsencrypt/live/brandobot.com/privkey.pem'))
