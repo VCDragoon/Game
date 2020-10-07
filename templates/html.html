@@ -353,7 +353,7 @@
               introState = 24
               console.log("skipping intro");
                 reveal_right_panel();
-                var userHtml = '<div class="chatBlock-bot">Random Bot:<div class="botText"><span>' + "I'm detecting another consciousness with us..." + "</span></div></div>";
+                var userHtml = '<div class="chatBlock-bot">Unknown User:<div class="botText"><span>' + "I'm detecting another consciousness with us..." + "</span></div></div>";
                 setTimeout(
                   function() 
                   {
@@ -403,7 +403,7 @@
                 console.log("current bot text = " + currentBotText);
                 reveal_right_panel();
                 $("#story-button").delay(4500).fadeIn(2000);
-                var userHtml = '<div class="chatBlock-bot">Random Bot:<div class="botText"><span>' + currentBotText + "</span></div></div>";
+                var userHtml = '<div class="chatBlock-bot">Unknown User:<div class="botText"><span>' + currentBotText + "</span></div></div>";
                 setTimeout(
                   function() 
                   {
@@ -447,7 +447,7 @@
                         var userHtml = '<div class=chatBlock-ai>BrandoBot:<div class="chatblock-ai aitext"><span class="text" id="dataText-' + introState + '">' + data + "</span></div></div>";
                         var dataLen = data.length;
                         var storyLen = introData.length;
-                        var botHtml = '<div class="chatBlock-bot">Random Bot:<div class="botText"><span>' + introData + "</span></div></div>";
+                        var botHtml = '<div class="chatBlock-bot">Unknown User:<div class="botText"><span>' + introData + "</span></div></div>";
                         var arr = [userHtml, botHtml];
                         var count = 0;
                         sleep(1000)
