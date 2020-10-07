@@ -14,7 +14,7 @@ import torch.nn.functional as F
 from transformers import GPT2Tokenizer, GPT2LMHeadModel, GPT2Config
 from flask import Flask, jsonify, render_template, request
 from flask_socketio import SocketIO
-from Game import app
+# from Game import app
 
 from flask import Flask, request, redirect
 
