@@ -14,7 +14,6 @@ import torch.nn.functional as F
 from transformers import GPT2Tokenizer, GPT2LMHeadModel, GPT2Config
 from flask import Flask, jsonify, render_template, request
 from flask_socketio import SocketIO
-# from Game import app
 
 from flask import Flask, request, redirect
 
@@ -420,7 +419,7 @@ def top_k_top_p_filtering(logits, top_k, top_p=1, filter_value=-float('Inf')):
 #         return redirect(request.url.replace('http://', 'https://'), code=301)
 
 if __name__ == "__main__":
-    app.run(port='8000')
+    app.run(port='8080')
 
 # DISABLING SSL UNTIL HOSTGATOR VERIFIES
 # , ssl_context=('/etc/letsencrypt/live/brandobot.com/fullchain.pem', '/etc/letsencrypt/live/brandobot.com/privkey.pem'))
