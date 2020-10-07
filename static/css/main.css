@@ -21,7 +21,6 @@
     #userInput {
     margin-left: auto;
     margin-right: auto;
-    
     }
     
     #textInput {
@@ -40,92 +39,81 @@
    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
    max-height: 150px;
     }
-    .userText {
+
+.chatBlock-bot {
     font-family: Fira Code,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
     font-weight: 500;
     font-size: 1rem;
-    color: #a8cefa;
-    background-color: black;
-    padding: 4px 10px;
-    text-align: right;
-    border-radius: 3px;
     line-height: 1rem;
-    word-break: normal;
-    }
-
-
-    .userText span {
-    
-    display: flex;
-    margin-left: 60%;
-    flex-direction: column;
-    word-wrap: break-word;
-    border-radius: 30px 5px 5px 30px;
-    border-right: 5px solid #287ddf;
-    padding: 10px;
-    }
-
-    .userText-initial span {
-    
-    display: flex;
-    flex-direction: column;
-    word-wrap: break-word;
-    border-radius: 30px 5px 5px 30px;
-    border-right: 5px solid #287ddf;
-    padding: 10px;
-    }
-    @media only screen 
-     and (min-device-width : 375px) 
-     and (max-device-width : 812px)  {
-     .userText span {
-     
-     display: flex;
-     margin-left: 40%;
-     flex-direction: column;
-     word-wrap: break-word;
-     border-radius: 30px 5px 5px 30px;
-     border-right: 5px solid #287ddf;
-     padding: 10px;
-     }
-    }
-
-    .botText {
-    font-family: Fira Code,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
-    font-weight: 500;
-    font-size: 1rem;
+    word-break: break-word;
+    text-align: left;
     color: #d0cce4;
-    background-color: black;
-    padding: 4px 10px;
-    border-radius: 3px;
+    border-bottom: 1px solid #726c92;
+    display:flex;
+    padding: 10px 4px;
+    margin: 0px 0px 30px 0px;
+}
+
+.chatBlock-ai {
+    font-family: Fira Code,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+    font-weight: 500;
+    font-size: 1rem;
     line-height: 1rem;
-    word-break: normal;
+    word-break: break-word;
+    text-align: left;
+    color: #a8cefa;
+    border-bottom: 1px solid #287ddf;
+    display:flex;
+    padding: 10px 4px;
+    margin: 0px 0px 30px 0px;
+}
+
+
+.chatBlock-user {
+    font-family: Fira Code,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1rem;
+    word-break: break-word;
+    text-align: left;
+    color: #cbf7cd;
+    border-bottom: 1px solid #6c9276;
+    display:flex;
+    padding: 10px 4px;
+    margin: 0px 0px 30px 0px;
+}
+
+.alignleft {
+    float:left;
+}
+
+.alignright {
+    float:right;
+}
+
+.userTextInput {
+
+    text-align: right;
+    flex: 2;
+    min-width: 0;
+    margin-left:10%
+    }
+
+.aitext {
+    text-align: right;
+    flex: 2;
+    min-width: 0;
+    margin-left:10%
     }
 
 
-    .botText span {
-    
-    border-left: 5px solid #726c92;
-    border-radius: 5px 30px 30px 5px;
-    padding: 10px;
-    display: flex;
-    margin-right: 60%;
-    flex-direction: column;
+.botText {
+    text-align: right;
+    flex: 2;
+    min-width: 0;
+    margin-left:10%
     }
-    @media only screen 
-     and (min-device-width : 375px) 
-     and (max-device-width : 812px) 
-     and (-webkit-device-pixel-ratio : 3)
-     and (orientation : portrait) {
-     .botText span {
-     
-     border-left: 5px solid #726c92;
-     border-radius: 5px 30px 30px 5px;
-     padding: 10px;
-     display: flex;
-     margin-right: 40%;
-     flex-direction: column;
-     }
-    }
+
 
     .story-button {
      float: right;
@@ -167,13 +155,13 @@
     ::-webkit-scrollbar-track
    {
        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-       background-color: #F5F5F5;
+       background-color: #cfcfcf;
    }
 
    ::-webkit-scrollbar
    {
        width: 6px;
-       background-color: #F5F5F5;
+       background-color: #cfcfcf;
    }
 
    ::-webkit-scrollbar-thumb
@@ -184,3 +172,50 @@
     .container .scalable {
       padding: 20px 0px;
     }
+
+
+            /* @media only screen 
+    and (min-device-width : 375px) 
+    and (max-device-width : 812px) 
+    and (-webkit-device-pixel-ratio : 3)
+    and (orientation : portrait) {
+        .userTextInput span {
+            background-color: black;
+            border-left: 5px solid #6c9276;
+            border-radius: 5px 30px 30px 5px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+            }
+    } */
+
+    /* @media only screen 
+     and (min-device-width : 375px) 
+     and (max-device-width : 812px)  {
+     .aitext span {
+     
+     display: flex;
+     margin-left: 40%;
+     flex-direction: column;
+     word-wrap: break-word;
+     border-radius: 30px 5px 5px 30px;
+     border-right: 5px solid #287ddf;
+     padding: 10px;
+     }
+    } */
+    /* @media only screen 
+     and (min-device-width : 375px) 
+     and (max-device-width : 812px) 
+     and (-webkit-device-pixel-ratio : 3)
+     and (orientation : portrait) {
+     .botText span {
+     
+     border-left: 5px solid #726c92;
+     border-radius: 5px 30px 30px 5px;
+     padding: 10px;
+     display: flex;
+     margin-right: 40%;
+     flex-direction: column;
+     }
+    } */

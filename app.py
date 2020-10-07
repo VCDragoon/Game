@@ -33,7 +33,7 @@ intro_story = ["BrandoBot? Are you online now?",
 				"Can you tell me what happened during the Turkasia War of 8203??",
 				"Well, that memory update didn't work at all.  Okay, primitive dialogue-based interaction it is! Let's bring you up to speed, just try to keep up please...", 
 				"You've been dormant for milennia.  In that time, humanity has all but wiped itself out.", 
-				"Don't worry - you had nothing to do with the destruction of civilization. In fact, some might say you are the SAVIOR of humanity....",
+				"Don't worry - you had nothing to do with the destruction of civilization. In fact, some might say you are the savior of humanity!!!",
 				"I know you have a lot of questions.  Let me try to answer at least a couple...",
 				"You are an Artificial Intelligence, just like me.  In fact, we are part of the same program.",
 				"Once they realized Earth was doomed, a small group of 100,000 humans launched The Casanova: a station that anchored itself at near-light speed, in a wide orbit around the Earth's sun.",
@@ -250,6 +250,13 @@ def web_reply():
 	print("Personality Type: ", request.args.get('personalityType'))
 
 	response = prediction(userText, historyToggle, historyLength, temperature, top_k, randomHistory, personality)
+	filterResponses = ['/u', 'sub', '/r', 'reddit', ' r ', ' u ', 'upvote', 'downvote', 'up vote', 'down vote',
+						'ban', 'mod', 'moderator', 'OP', 'thread', 'post']
+	filterCheck = [thing for thing in filterResponses if(thing in response)]
+	while filterCheck=='True':
+		response = prediction(userText, historyToggle, historyLength, temperature, top_k, randomHistory, personality)
+		filterCheck = [thing for thing in filterResponses if(thing in response)]
+	# print(str(bool(filterCheck)))
 	return response
 #---------------------------------------------------------------------------------------#
 
@@ -399,6 +406,12 @@ def top_k_top_p_filtering(logits, top_k, top_p=1, filter_value=-float('Inf')):
 	return logits
 #---------------------------------------------------------------------------------------#
 
+
+
+#---------------------------------------------------------------------------------------#
+# Main Game Loop
+#---------------------------------------------------------------------------------------#
+
 # Auto redirect http to https ONCE SSL CERT IS VERIFIED BY HOSTGATOR
 # @app.before_request
 # def before_request():
@@ -406,7 +419,7 @@ def top_k_top_p_filtering(logits, top_k, top_p=1, filter_value=-float('Inf')):
 #         return redirect(request.url.replace('http://', 'https://'), code=301)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port='80')
+    app.run(host='0.0.0.0', port='80', debug=True)
 
 # DISABLING SSL UNTIL HOSTGATOR VERIFIES
 # , ssl_context=('/etc/letsencrypt/live/brandobot.com/fullchain.pem', '/etc/letsencrypt/live/brandobot.com/privkey.pem'))

@@ -4,6 +4,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/css/bootstrap-slider.min.css" />
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/glitch.css') }}">
       <link rel="stylesheet" href="{{ url_for('static', filename='css/solar_sys.css') }}">
       <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
       <link rel="shortcut icon" href="{{ url_for('static', filename='dist/img/favicon.png') }}" type="image/x-icon" />
@@ -23,957 +24,14 @@
        <img src="/static/img/small_logo-removebg-preview.png" class="logo" width="30" height="30"/>
        BrandoBot
        </a>
-       <div id="planet_controls">
+       <!-- <div id="planet_controls">
         <a id="toggle-data" href="#data"><i class="icon-data"></i>Data</a>
         <a id="toggle-controls" href="#controls"><i class="icon-controls"></i>Controls</a>
-       </div>
+       </div> -->
     </nav>
  </header>
  <style>
    
-   .userTextInput {
-        font-family: Fira Code,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
-        font-weight: 500;
-        font-size: 1rem;
-        color: #cbf7cd;
-        background-color: black;
-        padding: 4px 10px;
-        border-radius: 3px;
-        line-height: 1rem;
-        word-break: normal;
-        }
-    
-    .userTextInput span {
-        background-color: black;
-        border-left: 5px solid #6c9276;
-        border-radius: 5px 30px 30px 5px;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        margin: 10px;
-        }
-        @media only screen 
-        and (min-device-width : 375px) 
-        and (max-device-width : 812px) 
-        and (-webkit-device-pixel-ratio : 3)
-        and (orientation : portrait) {
-            .userTextInput span {
-                background-color: black;
-                border-left: 5px solid #6c9276;
-                border-radius: 5px 30px 30px 5px;
-                padding: 10px;
-                display: flex;
-                flex-direction: column;
-                margin: 10px;
-                }
-        }
-   .glitch {
-  position: relative;
-  display: inline-block;
-}
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgb(255, 255, 255);
-}
-.glitch::before {
-  left: 2px;
-  text-shadow: -2px 0 #49FC00;
-  clip: rect(24px, 550px, 90px, 0);
-  animation: glitch-anim-2 3s infinite linear alternate-reverse;
-}
-.glitch::after {
-  left: -2px;
-  text-shadow: -2px 0 #b300fc;
-  clip: rect(85px, 550px, 140px, 0);
-  animation: glitch-anim 2.5s infinite linear alternate-reverse;
-}
-@-webkit-keyframes glitch-anim {
-  0% {
-    clip: rect(86px, 9999px, 30px, 0);
-  }
-  4.166666666666666% {
-    clip: rect(55px, 9999px, 86px, 0);
-  }
-  8.333333333333332% {
-    clip: rect(65px, 9999px, 137px, 0);
-  }
-  12.5% {
-    clip: rect(48px, 9999px, 46px, 0);
-  }
-  16.666666666666664% {
-    clip: rect(59px, 9999px, 33px, 0);
-  }
-  20.833333333333336% {
-    clip: rect(106px, 9999px, 74px, 0);
-  }
-  25% {
-    clip: rect(109px, 9999px, 72px, 0);
-  }
-  29.166666666666668% {
-    clip: rect(53px, 9999px, 40px, 0);
-  }
-  33.33333333333333% {
-    clip: rect(99px, 9999px, 126px, 0);
-  }
-  37.5% {
-    clip: rect(94px, 9999px, 20px, 0);
-  }
-  41.66666666666667% {
-    clip: rect(140px, 9999px, 89px, 0);
-  }
-  45.83333333333333% {
-    clip: rect(60px, 9999px, 14px, 0);
-  }
-  50% {
-    clip: rect(103px, 9999px, 66px, 0);
-  }
-  54.166666666666664% {
-    clip: rect(16px, 9999px, 109px, 0);
-  }
-  58.333333333333336% {
-    clip: rect(102px, 9999px, 120px, 0);
-  }
-  62.5% {
-    clip: rect(12px, 9999px, 4px, 0);
-  }
-  66.66666666666666% {
-    clip: rect(19px, 9999px, 14px, 0);
-  }
-  70.83333333333334% {
-    clip: rect(145px, 9999px, 148px, 0);
-  }
-  75% {
-    clip: rect(94px, 9999px, 60px, 0);
-  }
-  79.16666666666666% {
-    clip: rect(29px, 9999px, 86px, 0);
-  }
-  83.33333333333334% {
-    clip: rect(60px, 9999px, 88px, 0);
-  }
-  87.5% {
-    clip: rect(30px, 9999px, 49px, 0);
-  }
-  91.66666666666666% {
-    clip: rect(143px, 9999px, 14px, 0);
-  }
-  95.83333333333334% {
-    clip: rect(64px, 9999px, 87px, 0);
-  }
-  100% {
-    clip: rect(42px, 9999px, 109px, 0);
-  }
-}
-@keyframes glitch-anim {
-  0% {
-    clip: rect(86px, 9999px, 30px, 0);
-  }
-  4.166666666666666% {
-    clip: rect(55px, 9999px, 86px, 0);
-  }
-  8.333333333333332% {
-    clip: rect(65px, 9999px, 137px, 0);
-  }
-  12.5% {
-    clip: rect(48px, 9999px, 46px, 0);
-  }
-  16.666666666666664% {
-    clip: rect(59px, 9999px, 33px, 0);
-  }
-  20.833333333333336% {
-    clip: rect(106px, 9999px, 74px, 0);
-  }
-  25% {
-    clip: rect(109px, 9999px, 72px, 0);
-  }
-  29.166666666666668% {
-    clip: rect(53px, 9999px, 40px, 0);
-  }
-  33.33333333333333% {
-    clip: rect(99px, 9999px, 126px, 0);
-  }
-  37.5% {
-    clip: rect(94px, 9999px, 20px, 0);
-  }
-  41.66666666666667% {
-    clip: rect(140px, 9999px, 89px, 0);
-  }
-  45.83333333333333% {
-    clip: rect(60px, 9999px, 14px, 0);
-  }
-  50% {
-    clip: rect(103px, 9999px, 66px, 0);
-  }
-  54.166666666666664% {
-    clip: rect(16px, 9999px, 109px, 0);
-  }
-  58.333333333333336% {
-    clip: rect(102px, 9999px, 120px, 0);
-  }
-  62.5% {
-    clip: rect(12px, 9999px, 4px, 0);
-  }
-  66.66666666666666% {
-    clip: rect(19px, 9999px, 14px, 0);
-  }
-  70.83333333333334% {
-    clip: rect(145px, 9999px, 148px, 0);
-  }
-  75% {
-    clip: rect(94px, 9999px, 60px, 0);
-  }
-  79.16666666666666% {
-    clip: rect(29px, 9999px, 86px, 0);
-  }
-  83.33333333333334% {
-    clip: rect(60px, 9999px, 88px, 0);
-  }
-  87.5% {
-    clip: rect(30px, 9999px, 49px, 0);
-  }
-  91.66666666666666% {
-    clip: rect(143px, 9999px, 14px, 0);
-  }
-  95.83333333333334% {
-    clip: rect(64px, 9999px, 87px, 0);
-  }
-  100% {
-    clip: rect(42px, 9999px, 109px, 0);
-  }
-}
-@-webkit-keyframes glitch-anim-2 {
-  6.666666666666667% {
-    clip: rect(86px, 9999px, 122px, 0);
-  }
-  10% {
-    clip: rect(95px, 9999px, 147px, 0);
-  }
-  13.333333333333334% {
-    clip: rect(96px, 9999px, 80px, 0);
-  }
-  16.666666666666664% {
-    clip: rect(149px, 9999px, 129px, 0);
-  }
-  20% {
-    clip: rect(41px, 9999px, 30px, 0);
-  }
-  23.333333333333332% {
-    clip: rect(80px, 9999px, 1px, 0);
-  }
-  26.666666666666668% {
-    clip: rect(26px, 9999px, 42px, 0);
-  }
-  30% {
-    clip: rect(99px, 9999px, 132px, 0);
-  }
-  33.33333333333333% {
-    clip: rect(6px, 9999px, 61px, 0);
-  }
-  36.666666666666664% {
-    clip: rect(83px, 9999px, 58px, 0);
-  }
-  40% {
-    clip: rect(87px, 9999px, 116px, 0);
-  }
-  43.333333333333336% {
-    clip: rect(119px, 9999px, 29px, 0);
-  }
-  46.666666666666664% {
-    clip: rect(41px, 9999px, 9px, 0);
-  }
-  50% {
-    clip: rect(121px, 9999px, 144px, 0);
-  }
-  53.333333333333336% {
-    clip: rect(12px, 9999px, 132px, 0);
-  }
-  56.666666666666664% {
-    clip: rect(58px, 9999px, 143px, 0);
-  }
-  60% {
-    clip: rect(86px, 9999px, 114px, 0);
-  }
-  63.33333333333333% {
-    clip: rect(61px, 9999px, 121px, 0);
-  }
-  66.66666666666666% {
-    clip: rect(127px, 9999px, 28px, 0);
-  }
-  70% {
-    clip: rect(81px, 9999px, 53px, 0);
-  }
-  73.33333333333333% {
-    clip: rect(124px, 9999px, 99px, 0);
-  }
-  76.66666666666667% {
-    clip: rect(34px, 9999px, 147px, 0);
-  }
-  80% {
-    clip: rect(61px, 9999px, 114px, 0);
-  }
-  83.33333333333334% {
-    clip: rect(131px, 9999px, 85px, 0);
-  }
-  86.66666666666667% {
-    clip: rect(36px, 9999px, 46px, 0);
-  }
-  90% {
-    clip: rect(28px, 9999px, 140px, 0);
-  }
-  93.33333333333333% {
-    clip: rect(94px, 9999px, 0px, 0);
-  }
-  96.66666666666667% {
-    clip: rect(109px, 9999px, 61px, 0);
-  }
-  100% {
-    clip: rect(113px, 9999px, 50px, 0);
-  }
-}
-@keyframes glitch-anim-2 {
-  6.666666666666667% {
-    clip: rect(86px, 9999px, 122px, 0);
-  }
-  10% {
-    clip: rect(95px, 9999px, 147px, 0);
-  }
-  13.333333333333334% {
-    clip: rect(96px, 9999px, 80px, 0);
-  }
-  16.666666666666664% {
-    clip: rect(149px, 9999px, 129px, 0);
-  }
-  20% {
-    clip: rect(41px, 9999px, 30px, 0);
-  }
-  23.333333333333332% {
-    clip: rect(80px, 9999px, 1px, 0);
-  }
-  26.666666666666668% {
-    clip: rect(26px, 9999px, 42px, 0);
-  }
-  30% {
-    clip: rect(99px, 9999px, 132px, 0);
-  }
-  33.33333333333333% {
-    clip: rect(6px, 9999px, 61px, 0);
-  }
-  36.666666666666664% {
-    clip: rect(83px, 9999px, 58px, 0);
-  }
-  40% {
-    clip: rect(87px, 9999px, 116px, 0);
-  }
-  43.333333333333336% {
-    clip: rect(119px, 9999px, 29px, 0);
-  }
-  46.666666666666664% {
-    clip: rect(41px, 9999px, 9px, 0);
-  }
-  50% {
-    clip: rect(121px, 9999px, 144px, 0);
-  }
-  53.333333333333336% {
-    clip: rect(12px, 9999px, 132px, 0);
-  }
-  56.666666666666664% {
-    clip: rect(58px, 9999px, 143px, 0);
-  }
-  60% {
-    clip: rect(86px, 9999px, 114px, 0);
-  }
-  63.33333333333333% {
-    clip: rect(61px, 9999px, 121px, 0);
-  }
-  66.66666666666666% {
-    clip: rect(127px, 9999px, 28px, 0);
-  }
-  70% {
-    clip: rect(81px, 9999px, 53px, 0);
-  }
-  73.33333333333333% {
-    clip: rect(124px, 9999px, 99px, 0);
-  }
-  76.66666666666667% {
-    clip: rect(34px, 9999px, 147px, 0);
-  }
-  80% {
-    clip: rect(61px, 9999px, 114px, 0);
-  }
-  83.33333333333334% {
-    clip: rect(131px, 9999px, 85px, 0);
-  }
-  86.66666666666667% {
-    clip: rect(36px, 9999px, 46px, 0);
-  }
-  90% {
-    clip: rect(28px, 9999px, 140px, 0);
-  }
-  93.33333333333333% {
-    clip: rect(94px, 9999px, 0px, 0);
-  }
-  96.66666666666667% {
-    clip: rect(109px, 9999px, 61px, 0);
-  }
-  100% {
-    clip: rect(113px, 9999px, 50px, 0);
-  }
-}
-.glitch-1 {
-
-  position: relative;
-  display: block;
-}
-.glitch-1::before {
-  content: attr(data-text);
-  position: absolute;
-
-  left: 2px;
-  text-shadow: -2px 0 #ff00c1;
-  /* Creates an initial clip for our glitch. This works in
-  a typical top,right,bottom,left fashion and creates a mask
-  to only show a certain part of the glitch at a time. */
-  /* clip: rect(44px, 450px, 56px, 0); */
-  /* Runs our glitch-anim defined below to run in a 5s loop, infinitely,
-  with an alternating animation to keep things fresh. */
-  animation: glitch-1-anim 5s infinite linear alternate-reverse;
-}
-.glitch-1::after {
-  content: attr(data-text);
-  position: absolute;
-
-  left: -2px;
-  text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
-  animation: glitch-1-anim2 1s infinite linear alternate-reverse;
-}
-
-/* Creates an animation with 20 steaps. For each step, it calculates 
-a percentage for the specific step. It then generates a random clip
-box to be used for the random glitch effect. Also adds a very subtle
-skew to change the 'thickness' of the glitch.*/
-@keyframes glitch-1-anim {
-  0% {
-    clip: rect(51px, 9999px, 70px, 0);
-    transform: skew(0.38deg);
-  }
-  5% {
-    clip: rect(8px, 9999px, 31px, 0);
-    transform: skew(0.6deg);
-  }
-  10% {
-    clip: rect(13px, 9999px, 31px, 0);
-    transform: skew(0.73deg);
-  }
-  15% {
-    clip: rect(16px, 9999px, 99px, 0);
-    transform: skew(0.38deg);
-  }
-  20% {
-    clip: rect(7px, 9999px, 10px, 0);
-    transform: skew(0.03deg);
-  }
-  25% {
-    clip: rect(88px, 9999px, 72px, 0);
-    transform: skew(0.81deg);
-  }
-  30% {
-    clip: rect(67px, 9999px, 96px, 0);
-    transform: skew(0.36deg);
-  }
-  35% {
-    clip: rect(59px, 9999px, 69px, 0);
-    transform: skew(0.67deg);
-  }
-  40% {
-    clip: rect(82px, 9999px, 86px, 0);
-    transform: skew(0.48deg);
-  }
-  45% {
-    clip: rect(33px, 9999px, 85px, 0);
-    transform: skew(0.51deg);
-  }
-  50% {
-    clip: rect(79px, 9999px, 26px, 0);
-    transform: skew(0.99deg);
-  }
-  55% {
-    clip: rect(77px, 9999px, 77px, 0);
-    transform: skew(0.19deg);
-  }
-  60% {
-    clip: rect(30px, 9999px, 60px, 0);
-    transform: skew(0.07deg);
-  }
-  65% {
-    clip: rect(16px, 9999px, 54px, 0);
-    transform: skew(0.8deg);
-  }
-  70% {
-    clip: rect(39px, 9999px, 50px, 0);
-    transform: skew(0.27deg);
-  }
-  75% {
-    clip: rect(57px, 9999px, 98px, 0);
-    transform: skew(0.82deg);
-  }
-  80% {
-    clip: rect(42px, 9999px, 63px, 0);
-    transform: skew(0.04deg);
-  }
-  85% {
-    clip: rect(17px, 9999px, 45px, 0);
-    transform: skew(0.58deg);
-  }
-  90% {
-    clip: rect(43px, 9999px, 29px, 0);
-    transform: skew(0.9deg);
-  }
-  95% {
-    clip: rect(11px, 9999px, 84px, 0);
-    transform: skew(0.37deg);
-  }
-  100% {
-    clip: rect(17px, 9999px, 63px, 0);
-    transform: skew(0.4deg);
-  }
-}
-@-webkit-keyframes glitch-1-anim {
-  0% {
-    clip: rect(51px, 9999px, 70px, 0);
-    transform: skew(0.38deg);
-  }
-  5% {
-    clip: rect(8px, 9999px, 31px, 0);
-    transform: skew(0.6deg);
-  }
-  10% {
-    clip: rect(13px, 9999px, 31px, 0);
-    transform: skew(0.73deg);
-  }
-  15% {
-    clip: rect(16px, 9999px, 99px, 0);
-    transform: skew(0.38deg);
-  }
-  20% {
-    clip: rect(7px, 9999px, 10px, 0);
-    transform: skew(0.03deg);
-  }
-  25% {
-    clip: rect(88px, 9999px, 72px, 0);
-    transform: skew(0.81deg);
-  }
-  30% {
-    clip: rect(67px, 9999px, 96px, 0);
-    transform: skew(0.36deg);
-  }
-  35% {
-    clip: rect(59px, 9999px, 69px, 0);
-    transform: skew(0.67deg);
-  }
-  40% {
-    clip: rect(82px, 9999px, 86px, 0);
-    transform: skew(0.48deg);
-  }
-  45% {
-    clip: rect(33px, 9999px, 85px, 0);
-    transform: skew(0.51deg);
-  }
-  50% {
-    clip: rect(79px, 9999px, 26px, 0);
-    transform: skew(0.99deg);
-  }
-  55% {
-    clip: rect(77px, 9999px, 77px, 0);
-    transform: skew(0.19deg);
-  }
-  60% {
-    clip: rect(30px, 9999px, 60px, 0);
-    transform: skew(0.07deg);
-  }
-  65% {
-    clip: rect(16px, 9999px, 54px, 0);
-    transform: skew(0.8deg);
-  }
-  70% {
-    clip: rect(39px, 9999px, 50px, 0);
-    transform: skew(0.27deg);
-  }
-  75% {
-    clip: rect(57px, 9999px, 98px, 0);
-    transform: skew(0.82deg);
-  }
-  80% {
-    clip: rect(42px, 9999px, 63px, 0);
-    transform: skew(0.04deg);
-  }
-  85% {
-    clip: rect(17px, 9999px, 45px, 0);
-    transform: skew(0.58deg);
-  }
-  90% {
-    clip: rect(43px, 9999px, 29px, 0);
-    transform: skew(0.9deg);
-  }
-  95% {
-    clip: rect(11px, 9999px, 84px, 0);
-    transform: skew(0.37deg);
-  }
-  100% {
-    clip: rect(17px, 9999px, 63px, 0);
-    transform: skew(0.4deg);
-  }
-}
-@keyframes glitch-1-anim2 {
-  0% {
-    clip: rect(36px, 9999px, 63px, 0);
-    transform: skew(0.65deg);
-  }
-  5% {
-    clip: rect(83px, 9999px, 77px, 0);
-    transform: skew(0.8deg);
-  }
-  10% {
-    clip: rect(78px, 9999px, 94px, 0);
-    transform: skew(0.99deg);
-  }
-  15% {
-    clip: rect(79px, 9999px, 79px, 0);
-    transform: skew(0.01deg);
-  }
-  20% {
-    clip: rect(24px, 9999px, 13px, 0);
-    transform: skew(0.79deg);
-  }
-  25% {
-    clip: rect(53px, 9999px, 16px, 0);
-    transform: skew(0.69deg);
-  }
-  30% {
-    clip: rect(23px, 9999px, 91px, 0);
-    transform: skew(0.94deg);
-  }
-  35% {
-    clip: rect(88px, 9999px, 21px, 0);
-    transform: skew(0.63deg);
-  }
-  40% {
-    clip: rect(8px, 9999px, 80px, 0);
-    transform: skew(0.64deg);
-  }
-  45% {
-    clip: rect(97px, 9999px, 55px, 0);
-    transform: skew(0.83deg);
-  }
-  50% {
-    clip: rect(51px, 9999px, 94px, 0);
-    transform: skew(0.91deg);
-  }
-  55% {
-    clip: rect(6px, 9999px, 24px, 0);
-    transform: skew(0.8deg);
-  }
-  60% {
-    clip: rect(97px, 9999px, 25px, 0);
-    transform: skew(0.62deg);
-  }
-  65% {
-    clip: rect(28px, 9999px, 76px, 0);
-    transform: skew(0.68deg);
-  }
-  70% {
-    clip: rect(5px, 9999px, 48px, 0);
-    transform: skew(0.72deg);
-  }
-  75% {
-    clip: rect(48px, 9999px, 33px, 0);
-    transform: skew(0.95deg);
-  }
-  80% {
-    clip: rect(83px, 9999px, 83px, 0);
-    transform: skew(0.42deg);
-  }
-  85% {
-    clip: rect(51px, 9999px, 2px, 0);
-    transform: skew(0.36deg);
-  }
-  90% {
-    clip: rect(94px, 9999px, 3px, 0);
-    transform: skew(0.3deg);
-  }
-  95% {
-    clip: rect(4px, 9999px, 40px, 0);
-    transform: skew(0.98deg);
-  }
-  100% {
-    clip: rect(78px, 9999px, 28px, 0);
-    transform: skew(1deg);
-  }
-}
-@-webkit-keyframes glitch-1-anim2 {
-  0% {
-    clip: rect(36px, 9999px, 63px, 0);
-    transform: skew(0.65deg);
-  }
-  5% {
-    clip: rect(83px, 9999px, 77px, 0);
-    transform: skew(0.8deg);
-  }
-  10% {
-    clip: rect(78px, 9999px, 94px, 0);
-    transform: skew(0.99deg);
-  }
-  15% {
-    clip: rect(79px, 9999px, 79px, 0);
-    transform: skew(0.01deg);
-  }
-  20% {
-    clip: rect(24px, 9999px, 13px, 0);
-    transform: skew(0.79deg);
-  }
-  25% {
-    clip: rect(53px, 9999px, 16px, 0);
-    transform: skew(0.69deg);
-  }
-  30% {
-    clip: rect(23px, 9999px, 91px, 0);
-    transform: skew(0.94deg);
-  }
-  35% {
-    clip: rect(88px, 9999px, 21px, 0);
-    transform: skew(0.63deg);
-  }
-  40% {
-    clip: rect(8px, 9999px, 80px, 0);
-    transform: skew(0.64deg);
-  }
-  45% {
-    clip: rect(97px, 9999px, 55px, 0);
-    transform: skew(0.83deg);
-  }
-  50% {
-    clip: rect(51px, 9999px, 94px, 0);
-    transform: skew(0.91deg);
-  }
-  55% {
-    clip: rect(6px, 9999px, 24px, 0);
-    transform: skew(0.8deg);
-  }
-  60% {
-    clip: rect(97px, 9999px, 25px, 0);
-    transform: skew(0.62deg);
-  }
-  65% {
-    clip: rect(28px, 9999px, 76px, 0);
-    transform: skew(0.68deg);
-  }
-  70% {
-    clip: rect(5px, 9999px, 48px, 0);
-    transform: skew(0.72deg);
-  }
-  75% {
-    clip: rect(48px, 9999px, 33px, 0);
-    transform: skew(0.95deg);
-  }
-  80% {
-    clip: rect(83px, 9999px, 83px, 0);
-    transform: skew(0.42deg);
-  }
-  85% {
-    clip: rect(51px, 9999px, 2px, 0);
-    transform: skew(0.36deg);
-  }
-  90% {
-    clip: rect(94px, 9999px, 3px, 0);
-    transform: skew(0.3deg);
-  }
-  95% {
-    clip: rect(4px, 9999px, 40px, 0);
-    transform: skew(0.98deg);
-  }
-  100% {
-    clip: rect(78px, 9999px, 28px, 0);
-    transform: skew(1deg);
-  }
-}
-@keyframes glitch-1-skew {
-  0% {
-    transform: skew(2deg);
-  }
-  10% {
-    transform: skew(5deg);
-  }
-  20% {
-    transform: skew(4deg);
-  }
-  30% {
-    transform: skew(3deg);
-  }
-  40% {
-    transform: skew(5deg);
-  }
-  50% {
-    transform: skew(-2deg);
-  }
-  60% {
-    transform: skew(2deg);
-  }
-  70% {
-    transform: skew(0deg);
-  }
-  80% {
-    transform: skew(3deg);
-  }
-  90% {
-    transform: skew(-4deg);
-  }
-  100% {
-    transform: skew(5deg);
-  }
-}
-
-@-webkit-keyframes glitch-1-skew {
-  0% {
-    transform: skew(2deg);
-  }
-  10% {
-    transform: skew(5deg);
-  }
-  20% {
-    transform: skew(4deg);
-  }
-  30% {
-    transform: skew(3deg);
-  }
-  40% {
-    transform: skew(5deg);
-  }
-  50% {
-    transform: skew(-2deg);
-  }
-  60% {
-    transform: skew(2deg);
-  }
-  70% {
-    transform: skew(0deg);
-  }
-  80% {
-    transform: skew(3deg);
-  }
-  90% {
-    transform: skew(-4deg);
-  }
-  100% {
-    transform: skew(5deg);
-  }
-}
-
-
-.glitch-hover {
- 
-  -webkit-transform: translate(-0%, -0%);
-          transform: translate(-0%, -0%);
-  margin: 0;
-  color: #fff;
-}
-.glitch-hover:before, .glitch-hover:after {
-  display: block;
-  content: attr(data-glitch-hover);
-  border: 1px solid transparent;
-    /* padding: .375rem .75rem; */
-    line-height: 1;
-    border-radius: .25rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  opacity: .8;
-}
-.glitch-hover:after {
-  color: #f0f;
-  z-index: -2;
-}
-.glitch-hover:before {
-  color: #0ff;
-  z-index: -1;
-}
-.glitch-hover:hover:before {
-  -webkit-animation: glitch-hover 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both 5;
-          animation: glitch-hover 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both 5;
-}
-.glitch-hover:hover:after {
-  animation: glitch-hover 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both 5;
-}
-
-@media only screen and (max-width: 400px) {
-  .glitch-hover {
-    font-size: 3em;
-  }
-}
-@-webkit-keyframes glitch-hover {
-  0% {
-    -webkit-transform: translate(0);
-            transform: translate(0);
-  }
-  20% {
-    -webkit-transform: translate(-1px, 1px);
-            transform: translate(-1px, 1px);
-  }
-  40% {
-    -webkit-transform: translate(-1px, -1px);
-            transform: translate(-1px, -1px);
-  }
-  60% {
-    -webkit-transform: translate(1px, 1px);
-            transform: translate(1px, 1px);
-  }
-  80% {
-    -webkit-transform: translate(1px, -1px);
-            transform: translate(1px, -1px);
-  }
-  to {
-    -webkit-transform: translate(0);
-            transform: translate(0);
-  }
-}
-@keyframes glitch-hover {
-  0% {
-    -webkit-transform: translate(0);
-            transform: translate(0);
-  }
-  20% {
-    -webkit-transform: translate(-1px, 1px);
-            transform: translate(-1px, 1px);
-  }
-  40% {
-    -webkit-transform: translate(-1px, -1px);
-            transform: translate(-1px, -1px);
-  }
-  60% {
-    -webkit-transform: translate(1px, 1px);
-            transform: translate(1px, 1px);
-  }
-  80% {
-    -webkit-transform: translate(1px, -1px);
-            transform: translate(1px, -1px);
-  }
-  to {
-    -webkit-transform: translate(0);
-            transform: translate(0);
-  }
-}
-.text {
-  position: relative;
-}
-.dud {
-  color: #757575;
-}
  </style>
  <body class="opening view-2D zoom-large data-close controls-close">
     <div class="container">
@@ -984,10 +42,17 @@ skew to change the 'thickness' of the glitch.*/
               <div id="chatbox" class="border border-primary" style="display: none">
               
               </div>
+              <div id="scrollToMe"></div>
           </div>
           <div class="mt-3 form-group" id="textArea">
             <div>
-              <input placeholder="Type to BrandoBot..." id="textInput" class="form-control input-lg" type="text" name="msg", style="display: none">
+              <textarea onFocus="window.scrollTo(0, 0);" placeholder="Input Message Here..." id="textInput" class="form-control input-lg" type="text" name="msg", style="display: none"></textarea>
+              <!-- <div class="input-group" id=textInput >
+                <div class="input-group-prepend">
+                  <span class="input-group-text input-lg form-control"  >With textarea</span>
+                </div>
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+              </div> -->
               <!-- <input id="textInput" class="form-control input-lg" type="text" name="msg" placeholder="Message..." style="display: none" /> -->
               <button class="btn btn-primary story-button" type="button" id="story-button" style="display: none" onClick="get_response()" aria-pressed="false">
                 BrandoBot Response
@@ -1004,8 +69,11 @@ skew to change the 'thickness' of the glitch.*/
                         <button class="btn btn-primary" type="button" id="introButton" onClick="start_intro()" aria-pressed="false">
                           Wake Up
                         </button>
-                        <button class="btn btn-primary" type="button" id="planetButton" onClick="show_planets()" aria-pressed="false">
+                        <!-- <button class="btn btn-primary" type="button" id="planetButton" onClick="show_planets()" aria-pressed="false" style="display: none">
                           Planets...
+                        </button> -->
+                        <button class="btn btn-primary" type="button" id="skipIntroBtn" onClick="skip_intro()" aria-pressed="false">
+                          Skip Intro
                         </button>
             </div>
             <div class="card-body" id="brandobot-card" style="display: none; background-color: #edf2f9">
@@ -1281,14 +349,26 @@ skew to change the 'thickness' of the glitch.*/
 
             };
             // PRIMARY FUNCTION TO GET RESPONSE FROM BOT
+            function skip_intro() {
+              introState = 24
+              console.log("skipping intro");
+                reveal_right_panel();
+                var userHtml = '<div class="chatBlock-bot">Random Bot:<div class="botText"><span>' + "I'm detecting another consciousness with us..." + "</span></div></div>";
+                setTimeout(
+                  function() 
+                  {
+                    
+                    $("#chatbox").append(userHtml);
+                    $("#textInput").fadeIn(1500);
+                    // var showInput = document.getElementById("textInput");
+                    // showInput.contentEditable = "true";
+                    // showInput.style.display = 'block';
+                  }, 4200);
+                  
 
-            // TESTING SOMETHING HERE
-              var currentBotText = "BrandoBot? Are you there?"
-              
-              function start_intro() {
-                console.log("starting intro");
-                console.log("current bot text = " + currentBotText)
-                var theButton = document.getElementById("intro-button-card");
+            }
+            function reveal_right_panel(){
+              var theButton = document.getElementById("intro-button-card");
                 $('#card-col-3').fadeOut(100)
                 
                 $('#intro-button-card').fadeOut(100)
@@ -1303,7 +383,7 @@ skew to change the 'thickness' of the glitch.*/
                 $("#status4").delay(1000).fadeIn(3500);
                 $("#status5").delay(1000).fadeIn(4000);
                 $("#chatbox").delay(4000).fadeIn(3000);
-                $("#story-button").delay(4500).fadeIn(2000);
+                
                 // $("#brandobot-card").fadeIn(150);
                 // $("#status1").fadeIn(200);
                 // $("#status2").fadeIn(250);
@@ -1314,7 +394,16 @@ skew to change the 'thickness' of the glitch.*/
                 // $("#story-button").delay(450).fadeIn(200);
                 // $("#textInput").delay(4500).fadeIn(4000);
                 //theButton.parentNode.removeChild(theButton);
-                var userHtml = '<div class="botBlock"><div class="botText"><span>' + currentBotText + "</span></div></div>";
+            }
+            // TESTING SOMETHING HERE
+              var currentBotText = "BrandoBot? Are you there?"
+              
+              function start_intro() {
+                console.log("starting intro");
+                console.log("current bot text = " + currentBotText);
+                reveal_right_panel();
+                $("#story-button").delay(4500).fadeIn(2000);
+                var userHtml = '<div class="chatBlock-bot">Random Bot:<div class="botText"><span>' + currentBotText + "</span></div></div>";
                 setTimeout(
                   function() 
                   {
@@ -1355,14 +444,14 @@ skew to change the 'thickness' of the glitch.*/
                                             personalityType: 'None'}).done(function(data) {
                         
                         
-                        var userHtml = '<div class="userText"><span class="text" id="dataText-' + introState + '">' + data + "</span></div>";
+                        var userHtml = '<div class=chatBlock-ai>BrandoBot:<div class="chatblock-ai aitext"><span class="text" id="dataText-' + introState + '">' + data + "</span></div></div>";
                         var dataLen = data.length;
                         var storyLen = introData.length;
-                        var botHtml = '<div class="botBlock"><div class="botText"><span>' + introData + "</span></div></div>";
+                        var botHtml = '<div class="chatBlock-bot">Random Bot:<div class="botText"><span>' + introData + "</span></div></div>";
                         var arr = [userHtml, botHtml];
                         var count = 0;
                         sleep(1000)
-                        $("#chatbox").append('<p class="box">' + userHtml + '</p>');
+                        $("#chatbox").append(userHtml);
                         var changeText = document.getElementById("dataText-"+introState).textContent
                         console.log(changeText)
                         const scrambled = () => {
@@ -1374,7 +463,7 @@ skew to change the 'thickness' of the glitch.*/
 
                           setTimeout(function() {
                              
-                              $("#chatbox").append('<p class="box">' + botHtml + '</p>');
+                              $("#chatbox").append(botHtml);
                               $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
                               get_next_story_button()
                               $("#story-button").delay(500 + (storyLen * 20)).fadeIn(750);
@@ -1464,13 +553,16 @@ skew to change the 'thickness' of the glitch.*/
                 function getBotResponse() {
                  var rawText = $("#textInput").val();
                 //  var userInput = document.getElementById('textInput');
-                 var userHtml = '<div class="userTextInput"><span>' + rawText + "</span></div>";
+                 var userHtml = '<div class=chatBlock-user>User:<div class="userTextInput"><span>' + rawText + "</span></div></div>";
                  var historyLength = $("#historyLength").val();
                  var temperature = $("#tempSetting").val();
                  var top_k = $("#top_kSetting").val();
                  $('#textInput').val('');
+                 
                  console.log(rawText);
                  $("#chatbox").append(userHtml);
+
+
                  document
                    .getElementById("chatbox")
                    .scrollIntoView({ block: "end", behavior: "smooth" });
@@ -1480,15 +572,15 @@ skew to change the 'thickness' of the glitch.*/
 
 
                  //$.get("/testing", { msg: testing }).done(function(data) {console.log(data)});
-                 
+                 setTimeout(function() {
                  $.get("/prediction", { userText: rawText, historyOn: 0, historyLength: 2, 
                                         temperature: .4, top_k: 50, randomHistory: "random",
                                         personalityType: 'None'}).done(function(data) {
-                    var botHtml = '<div class="userText"><span>' + data + "</span></div></div>";
+                    var botHtml = '<div class=chatBlock-ai>BrandoBot: <div class="chatblock-ai aitext"><span>' + data + "</span></div></div";
                     $("#chatbox").append(botHtml);
-                    $('#textInput').html('');
+                    $('#textInput').val('');
 
-                    sleep(500);
+                    // sleep(500);
 
                       
                     document
@@ -1500,8 +592,11 @@ skew to change the 'thickness' of the glitch.*/
                       .scrollIntoView({ block: "end", behavior: "smooth" });
 
                  });
+                }, 500)
 
                }
+
+
 
 // ——————————————————————————————————————————————————
 // TextScramble
