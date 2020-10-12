@@ -30,7 +30,7 @@
    padding: .375rem .75rem;
    font-size: 1rem;
    line-height: 1.5;
-   height:auto;
+   height:2.5rem;
    color: #495057;
    background-color: #fff;
    background-clip: padding-box;
@@ -51,7 +51,7 @@
     border-bottom: 1px solid #726c92;
     display:flex;
     padding: 10px 4px;
-    margin: 0px 0px 30px 0px;
+    margin: 0px 0px 10px 0px;
 }
 
 .chatBlock-ai {
@@ -65,7 +65,7 @@
     border-bottom: 1px solid #287ddf;
     display:flex;
     padding: 10px 4px;
-    margin: 0px 0px 30px 0px;
+    margin: 0px 0px 10px 0px;
 }
 
 
@@ -80,7 +80,7 @@
     border-bottom: 1px solid #6c9276;
     display:flex;
     padding: 10px 4px;
-    margin: 0px 0px 30px 0px;
+    margin: 0px 0px 10px 0px;
 }
 
 .alignleft {
@@ -93,14 +93,16 @@
 
 .userTextInput {
 
-    text-align: justify;
+    text-align: left;
+    text-align: -webkit-left;
     flex: 2;
     min-width: 0;
     margin-left:10%
     }
 
 .aitext {
-    text-align: justify;
+    text-align: left;
+    text-align: -webkit-left;
     flex: 2;
     min-width: 0;
     margin-left:10%
@@ -108,7 +110,8 @@
 
 
 .botText {
-    text-align: justify;
+    text-align: left;
+    text-align: -webkit-left;
     flex: 2;
     min-width: 0;
     margin-left:10%
@@ -149,7 +152,7 @@
     }
     .box {
     overflow: auto;
-    max-height: 355px;
+    max-height: 45rem;
     }
 
     ::-webkit-scrollbar-track

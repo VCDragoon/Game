@@ -141,12 +141,12 @@ gpt2_medium_config = GPT2Config(n_ctx=1024, n_embd=1024, n_layer=24, n_head=16)
 gpt2_large_config = GPT2Config(n_ctx=1024, n_embd=1280, n_layer=36, n_head=20)  
 
 model_size = "medium"
-tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+tokenizer = GPT2Tokenizer.from_pretrained('microsoft/DialoGPT-medium')
 
 # Model Loads:
 
 model = GPT2LMHeadModel(GPT2Config(n_ctx=1024, n_embd=1024, n_layer=24, n_head=16))
-model.load_state_dict(torch.load("medium_ft.pkl"), strict=False)
+model.load_state_dict(torch.load("sarc_9/pytorch_model.bin"), strict=False)
 
 device = torch.device("cuda")
 model = model.to(device)
@@ -313,13 +313,15 @@ def prediction(userText, historyToggle, historyLength, temperature, top_k, rando
 	conditioned_tokens, generated_tokens = encode_text(finalInputString)
 	
 	response = decode_text(conditioned_tokens, generated_tokens, temperature, top_k)
+	response =  response.replace("<|startoftext|>", "")
 	history.append(response)
 	"""
 	TODO: refactor the "save chats" into a function so I don't have to edit it in every block
 	"""
 	addChats = [userText, response]
 	#save_chats.append(userText, response)
-	
+	print(tokenizer.decode(0))
+	print(tokenizer.decode(50256))
 	print("BrandoBot Says: ", response)
 	print(" ")
 
@@ -349,7 +351,7 @@ def decode_text(conditioned_tokens, generated_tokens, temperature, top_k):
 		indexed_tokens = conditioned_tokens + generated_tokens
 		tokens_tensor = torch.tensor([indexed_tokens])
 		tokens_tensor = tokens_tensor.to('cuda')
-		
+		# print(tokens_tensor)
 		with torch.no_grad():
 			outputs = model(tokens_tensor)
 			predictions = outputs[0]
@@ -362,15 +364,28 @@ def decode_text(conditioned_tokens, generated_tokens, temperature, top_k):
 		### multinominal vs argmax probabilities
 		next_token = torch.multinomial(probabilities, 1)
 		#next_token = torch.argmax(probabilities, -1).unsqueeze(0)
-
+		# print(next_token)
 		generated_tokens.append(next_token.item())
 		result = next_token.item()
-
+		# print(result)
+		
 		if result == 50256:
 			returnText =(tokenizer.decode(generated_tokens[:-1]))
 			conditioned_tokens += generated_tokens
 			generated_tokens = []
 			return returnText
+
+		if result== 91:
+			returnText =(tokenizer.decode(generated_tokens[:-1]))
+			conditioned_tokens += generated_tokens
+			generated_tokens = []
+			return returnText
+
+		if len(generated_tokens) > 100:
+			returnText =(tokenizer.decode(generated_tokens[:-1]))
+			conditioned_tokens += generated_tokens
+			generated_tokens = []
+			return returnText			
 #---------------------------------------------------------------------------------------#
 
 #---------------------------------------------------------------------------------------#
@@ -419,7 +434,7 @@ def top_k_top_p_filtering(logits, top_k, top_p=1, filter_value=-float('Inf')):
 #         return redirect(request.url.replace('http://', 'https://'), code=301)
 
 if __name__ == "__main__":
-    app.run(port='8080')
+    app.run(host='0.0.0.0', port='8081', debug=True)
 
 # DISABLING SSL UNTIL HOSTGATOR VERIFIES
 # , ssl_context=('/etc/letsencrypt/live/brandobot.com/fullchain.pem', '/etc/letsencrypt/live/brandobot.com/privkey.pem'))
