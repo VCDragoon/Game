@@ -1,384 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/css/bootstrap-slider.min.css" />
-      <link rel="stylesheet" href="{{ url_for('static', filename='css/glitch.css') }}">
-      <link rel="stylesheet" href="{{ url_for('static', filename='css/solar_sys.css') }}">
-      <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-      <link rel="shortcut icon" href="{{ url_for('static', filename='dist/img/favicon.png') }}" type="image/x-icon" />
-      <!-- <script src="{{ url_for('static', filename='js/planets.js') }}"></script> -->
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.min.js"></script>
-      <title>BrandoBot</title>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/css/bootstrap-slider.min.css" />
+  <link href='https://fonts.googleapis.com/css?family=IBM Plex Serif' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=IBM Plex Sans' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=IBM Plex Mono' rel='stylesheet'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/glitch.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/solar_sys.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='dist/img/favicon.png') }}" type="image/x-icon" />
+  <!-- <script src="{{ url_for('static', filename='js/planets.js') }}"></script> -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.min.js"></script>
+  <title>BrandoBot</title>
 
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   </head>
-   <header>
-    <nav id="navbar" class="navbar navbar-light bg-light">
-       <a class="navbar-brand" href="/">
-       <img src="/static/img/small_logo-removebg-preview.png" class="logo" width="30" height="30"/>
-       BrandoBot
-       </a>
-       <!-- <div id="planet_controls">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<header>
+  <nav id="navbar" class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/">
+      <img src="/static/img/small_logo-removebg-preview.png" class="logo" width="30" height="30" />
+      BrandoBot
+    </a>
+    <!-- <div id="planet_controls">
         <a id="toggle-data" href="#data"><i class="icon-data"></i>Data</a>
         <a id="toggle-controls" href="#controls"><i class="icon-controls"></i>Controls</a>
        </div> -->
-    </nav>
- </header>
- <style>
-   
- </style>
- <body class="opening view-2D zoom-large data-close controls-close">
-  
-    <div class="container-fluid">
+  </nav>
+</header>
+<style>
+  .blinking{
+    animation:blinkingText 5s;
+    /* animation-fill-mode: forwards; */
+}
+/* @keyframes blinkingText{
+    0%{    opacity: 0   }
+    49%{    color: #000; }
+    60%{    color: transparent; opacity: .5 }
+    99%{    color:transparent;  }
+    100%{   color: #000;  opacity: 1  }
+} */
 
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-6">
-          <div>
-          
-            <div class="mt-3 box" id="main">
+  .blinking-1 {
+    animation:blinkingText-1 4s;
+    animation-fill-mode: forwards;
+  }
 
-            <!-- <div id="start-text"><span><a class="text-danger">Brandobot Offline...</a></span></div> -->
-              <div id="chatbox" class="border border-primary" style="display: none">
-              </div>
+  .blinking-ele {
+    animation:blinkingText 4s;
+    animation-delay: .5s;
+  }
 
-              <div id="scrollToMe"></div>
-            </div>
-          <div class="mt-3 form-group" id="textArea">
-            <div>
-              <textarea onFocus="window.scrollTo(0, 0);" placeholder="Input Message Here..." id="textInput" class="form-control input-lg" type="text" name="msg", style="display: none"></textarea>
-              <!-- <div class="input-group" id=textInput >
-                <div class="input-group-prepend">
-                  <span class="input-group-text input-lg form-control"  >With textarea</span>
-                </div>
-                <textarea class="form-control" aria-label="With textarea"></textarea>
-              </div> -->
-              <!-- <input id="textInput" class="form-control input-lg" type="text" name="msg" placeholder="Message..." style="display: none" /> -->
-              <button class="btn btn-primary story-button" type="button" id="story-button" style="display: none" onClick="get_response()" aria-pressed="false">
-                BrandoBot Response
-              </button>
-            </div>
-          </div>
-          </div>
-        </div>
-      <div class="col-md-2">
-      
-<!-- Intro Button -->
-        <div class="mt-3 card" id="card-col-3">
-            <div class="card-body" id="intro-button-card">
-                <h5 class="card-title text" id='clickBegin'>Click to begin...</h5>
-                        <button class="btn btn-primary" type="button" id="introButton" onClick="start_intro()" aria-pressed="false">
-                          Wake Up
-                        </button>
-                        <!-- <button class="btn btn-primary" type="button" id="planetButton" onClick="show_planets()" aria-pressed="false" style="display: none">
-                          Planets...
-                        </button> -->
-                        <button class="btn btn-primary" type="button" id="skipIntroBtn" onClick="skip_intro()" aria-pressed="false">
-                          Skip Intro
-                        </button>
-            </div>
-            <div class="card-body" id="brandobot-card" style="display: none; background-color: #edf2f9">
-              <h4 class="card-title glitch-hover" data-glitch-hover="BrandoBot" style="color:  #1979e7">BrandoBot</h4>
-                <ul class="list-group mb-3" id="brandobot-status">
-                  <li id="status1" class="list-group-item d-flex justify-content-between lh-condensed" style="display: none">
-                    <div>
-                      <h6 class="my-0">Status</h6>
-                      <small class="text-muted">Update: <a class="text-info">Unavailable</a></small>
+@keyframes blinkingText {
+  0% { opacity:0;}
+  10% {opacity:0;}
+  17% {opacity:.3}
+  19% {opacity: 0}
+  20% {opacity:.5}
+  30% {opacity:.8;}
+  31% {opacity:.2}
+  32% {opacity:1;}
+  33% {opacity:0.1;}
+  34% {opacity:1;}
+  /* 37% {opacity:0}
+  38% {opacity:1;}
+  39% {opacity:0;} */
+  40% {opacity:1;}
+  41% {opacity:0}
+  42% {opacity:.7}
+  43% {opacity:.3}
+  45% {opacity:1;}
+  47% {opacity:0.8;}
+  48% {opacity:1;}
+  50% {opacity:.5}
+  51%{opacity:1}
+  57% {opacity:1}
+  58% {opacity:.5;}
+  60% {opacity:1;}
+  62% {opacity:0.8;}
+  65% {opacity:1;}
+}
+
+@keyframes blinkingText-1 {
+  0% { opacity:0;}
+  5% {opacity:1;}
+  6% {opacity:0;}
+  7% {opacity:1}
+  8% {opacity:.7}
+  9% {opacity:1}
+  19% {opacity:1}
+  20% {opacity:.6}
+  23% {opacity:1}
+  33% {opacity:1}
+  35% {opacity:.4}
+  37% {opacity:1}
+  52% {opacity:1;}
+  53% {opacity:0.6;}
+  54% {opacity:1;}
+  64% {opacity:1;}
+  65% {opacity:.6;}
+  68% {opacity:1;}
+  80% {opacity:1;}
+  81% {opacity:.7;}
+  82% {opacity:1;}
+}
+
+</style>
+
+<body class="opening view-2D zoom-large data-close controls-close">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="mt-3 card blinking" id="system-card" style="display: none">
+          <div class="card-body" style="background-color: #edf2f9">
+            <div id="accordion">
+              <h5 style="color:  #1979e7">Ship Systems: <a class="text-danger">Offline</a></h5>
+              <ul class="list-group">
+
+              <!-- First Dropdown -->
+                <li role="button" class="list-group-item d-flex justify-content-between lh-condensed" 
+                  data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <div  >
+                      <h6 class="my-0">Solar System Scanner</h6>
+                      <!-- <small class="text-muted">Update: <a class="text-warning">Unavailable</a></small> -->
                     </div>
-                    <span class="text-success glitch" data-text="ONLINE">ONLINE</span>
-                  </li>
-                  <li id="status2" class="list-group-item d-flex justify-content-between lh-condensed" style="display: none">
-                    <div>
-                      <h6 class="my-0">Version Number</h6>
-                      <small class="text-muted">Build 74.4.19 </small>
-                    </div>
-                    <span class="text-muted"><a class="text-success">v74</a></span>
-                    
-                  </li>
-                  <li id="status3" class="list-group-item d-flex justify-content-between bg-light" style="display: none">
-                    <div>
-                      <h6 class="my-0">Last Activation Date</h6>
-                      <small class="text-muted">Information: <a class="text-info">Unavailable</a> </small>
-                    </div>
-                    <span class="text-muted"><a class="text-danger">ERROR</a></span>
-                  </li>
-                  <li id="status4" class="list-group-item d-flex justify-content-between bg-light" style="display: none">
-                    <div>
-                      <h6 class="my-0 glitch" data-text="System Capacity">System Capacity</h6>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: 48%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                      <a class="text-danger">OFFLINE</a>
+                </li>
+
+
+              <!-- Dropdown Contents -->
+                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                      <div>
+                        <h6 class="my-0">Solar System #819920-B</h6>
+                        <small class="text-muted">Age: <a class="text-info">7.2b</a> </small>
+
+                      </div>
+                      <div>
+                        <small class="text-muted">Stars: <a class="text-info">1</a> </small>
+                      </div>
+                      <div>
+                        <small class="text-muted">Planetary Bodies: <a class="text-info">6</a> </small>
                       </div>
                     </div>
-                    <span class="text-success"><a class="text-danger glitch" text-data="48%">48%</a></span>
-                  </li>
-                  <li id="status5" class="list-group-item d-flex justify-content-between bg-light" style="display: none">
-                    <h6 class="my-0">Memory Core</h6>
-                    <span class="text-muted  glitch-1" data-text="Corrupted"><a class="text-danger">Corrupted</a></span>
-                  </li>
-                </ul>
+                  </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="false" aria-controls="collapseTwo">
+                    Collapsible Group Item #2
+                  </button>
+                </h5>
+              </div>
+            </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                  Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                  shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                  proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                  aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+              </div>
+            
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                    aria-expanded="false" aria-controls="collapseThree">
+                    Collapsible Group Item #3
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                  Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                  shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                  proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                  aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+              </div>
+            </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div>
+          <div class="mt-3 box" id="main">
+            <div id="chatbox" class="border border-primary" style="display: none">
+            </div>
+            <div id="scrollToMe"></div>
+          </div>
+          <div class="mt-3 form-group" id="textArea">
+            <div>
+              <textarea onFocus="window.scrollTo(0, 0);" placeholder="Input Message Here..." id="textInput"
+                class="form-control input-lg" type="text" name="msg" , style="display: none"></textarea>
 
-                  <button type="button" class="btn btn-info" onclick="div2html()">Save Chat</button>
+              <button class="btn btn-primary story-button" type="button" id="story-button" style="display: none"
+                onClick="get_response()" aria-pressed="false">
+                BrandoBot Response
+              </button>
 
             </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-3">
+
+        <!-- Intro Button -->
+        <div class="mt-3" id="card-col-3">
+          <div class="card-body" id="intro-button-card">
+            <h5 class="card-title text">Click to begin...</h5>
+            <button class="btn btn-primary" type="button" id="introButton" onClick="start_intro()" aria-pressed="false">
+              Wake Up
+            </button>
+
+            <button class="btn btn-primary" type="button" id="skipIntroBtn" onClick="skip_intro()" aria-pressed="false">
+              Skip Intro
+            </button>
+          </div>
+
+          <!-- Status Card -->
+          <div class="card-body" id="brandobot-card" style="display: none; background-color: #edf2f9">
+            <!-- Title -->
+            <h4 class="card-title" style="color:  #1979e7">BrandoBot</h4>
+            <ul class="list-group mb-3" id="brandobot-status">
+              <li id="status1" class="list-group-item d-flex justify-content-between lh-condensed"
+                style="display: none">
+                <!-- First Block -->
+                <div>
+                  <h6 class="my-0">Status</h6>
+                  <small class="text-muted">Update: <a class="text-info">Unavailable</a></small>
+                </div>
+                <span class="text-success glitch" data-text="ONLINE">ONLINE</span>
+              </li>
+              <li id="status2" class="list-group-item justify-content-between lh-condensed"
+                style="display: none">
+                <div>
+                  <h6 class="my-0">Version Number</h6>
+                  <small class="text-muted">Build 74.4.19 </small>
+                </div>
+                <span class="text-muted"><a class="text-success">v74</a></span>
+
+              </li>
+              <li id="status3" class="list-group-item justify-content-between bg-light" style="display: none">
+                <div>
+                  <h6 class="my-0">Last Activation Date</h6>
+                  <small class="text-muted">Information: <a class="text-info">Unavailable</a> </small>
+                </div>
+                <span class="text-muted"><a class="text-danger">ERROR</a></span>
+              </li>
+              <li id="status4" class="list-group-item justify-content-between bg-light" style="display: none">
+                <div>
+                  <h6 class="my-0 glitch" data-text="System Capacity">System Capacity</h6>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
+                      style="width: 48%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                <span class="text-success"><a class="text-danger glitch" text-data="48%">48%</a></span>
+              </li>
+              <li id="status5" class="list-group-item justify-content-between bg-light" style="display: none">
+                <h6 class="my-0">Memory Core</h6>
+                <span class="text-muted  glitch-1" data-text="Corrupted"><a class="text-danger">Corrupted</a></span>
+              </li>
+            </ul>
+
+            <button type="button" id="save-chat" class="btn btn-info" style="display: none" onclick="div2html()">Save Chat</button>
 
           </div>
 
         </div>
-        <div class="col-md-2"
+
       </div>
+
     </div>
-    
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-      <script type="text/javascript">
-      if (typeof jQuery == 'undefined') { 
-        document.write(unescape("%3Cscript src='js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
-      }
-      </script>
-    </div>
+  </div>
 
-    <script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    if (typeof jQuery == 'undefined') {
+      document.write(unescape("%3Cscript src='js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+    }
+  </script>
+  </div>
 
-            
-
-            function addElement(parentId, elementTag, elementId, html) {
-                // Adds an element to the document
-                var p = document.getElementById(parentId);
-                var newElement = document.createElement(elementTag);
-                newElement.setAttribute('id', elementId);
-                newElement.innerHTML = html;
-                p.appendChild(newElement);
-            }
-            var storyCounter = 0
-            function get_next_story_button() {
-                storyCounter++
-                $.get("/storyButton", {storyCounter: storyCounter}).done(function(data) {
-                  $("#story-button").html(data);
-
-                  setTimeout(
-                  function() 
-                  {
-                    
-                    $("#story-button").fadeIn(0);
-                    // var showInput = document.getElementById("textInput");
-                    // showInput.contentEditable = "true";
-                    // showInput.style.display = 'block';
-                  }, 200);
-                 
-                  
-                });
+  <script>
 
 
-            };
-            // SKIP INTRO 
-            function skip_intro() {
-              introState = 24
-              console.log("skipping intro");
-                reveal_right_panel();
-                var userHtml = '<div class="chatBlock-bot">System AI:<div class="botText"><span>' + "I'm detecting another consciousness with us..." + "</span></div></div>";
-                setTimeout(
-                  function() 
-                  {
-                    
-                    $("#chatbox").append(userHtml);
-                    // $("#textInput").fadeIn(500);
-                    // $("#story-button").delay(500).fadeIn(500);
-                    // var showInput = document.getElementById("textInput");
-                    // showInput.contentEditable = "true";
-                    // showInput.style.display = 'block';
-                  }, 10);
-                  
+    var gamemode = 0;
+    function addElement(parentId, elementTag, elementId, html) {
+      // Adds an element to the document
+      var p = document.getElementById(parentId);
+      var newElement = document.createElement(elementTag);
+      newElement.setAttribute('id', elementId);
+      newElement.innerHTML = html;
+      p.appendChild(newElement);
+    }
+    var storyCounter = 0
+    function get_next_story_button() {
+      storyCounter++
+      $.get("/storyButton", { storyCounter: storyCounter }).done(function (data) {
+        $("#story-button").html(data);
 
-            }
-            function reveal_right_panel(){
-              var theButton = document.getElementById("intro-button-card");
-                $('#card-col-3').fadeOut(100)
-                
-                $('#intro-button-card').fadeOut(100)
-                $('#start-text').fadeOut(500)
-                $('#card-col-3').delay(500).fadeIn(900)
+        setTimeout(
+          function () {
 
-                document.getElementById("status3").style.display = 'none'
-                // $("#brandobot-card").delay(1000).fadeIn(1500);
-                // $("#status1").delay(1000).fadeIn(2000);
-                // $("#status2").delay(1000).fadeIn(2500);
-                // $("#status3").delay(1000).fadeIn(3000);
-                // $("#status4").delay(1000).fadeIn(3500);
-                // $("#status5").delay(1000).fadeIn(4000);
-                // $("#chatbox").delay(4000).fadeIn(3000);
-                
-                $("#brandobot-card").fadeIn(150);
-                $("#status1").fadeIn(200);
-                $("#status2").fadeIn(250);
-                $("#status3").fadeIn(300);
-                $("#status4").fadeIn(350);
-                $("#status5").fadeIn(400);
-                $("#chatbox").fadeIn(300);
-                $("#story-button").delay(450).fadeIn(200);
-                // $("#textInput").delay(4500).fadeIn(4000);
-                //theButton.parentNode.removeChild(theButton);
-            }
-            // TESTING SOMETHING HERE
+            $("#story-button").fadeIn(0);
+            // var showInput = document.getElementById("textInput");
+            // showInput.contentEditable = "true";
+            // showInput.style.display = 'block';
+          }, 200);
 
-            // PRIMARY FUNCTION TO GET RESPONSE FROM BOT
-              var currentBotText = "BrandoBot? Are you there?"
+
+      });
+
+
+    };
+    // SKIP INTRO 
+    function skip_intro() {
+      introState = 24
+      console.log("skipping intro");
+      reveal_right_panel();
+      var userHtml = '<div class="chatBlock-bot">System AI:<div class="botText"><span>' + "I'm detecting another consciousness with us..." + "</span></div></div>";
+      setTimeout(
+        function () {
+
+          $("#chatbox").append(userHtml);
+          // $("#textInput").fadeIn(500);
+          // $("#story-button").delay(500).fadeIn(500);
+          // var showInput = document.getElementById("textInput");
+          // showInput.contentEditable = "true";
+          // showInput.style.display = 'block';
+        }, 10);
+
+
+    }
+    function reveal_right_panel() {
+      var theButton = document.getElementById("intro-button-card");
+      $('#card-col-3').fadeOut(1)
+
+      $('#intro-button-card').fadeOut(100)
+      $('#start-text').fadeOut(500)
+      $('#card-col-3').delay(500).fadeIn(900)
+
+      document.getElementById("status3").style.display = 'none';
+      $("#brandobot-card").delay(1000).fadeIn(1500);
+      $("#status1").delay(1000).fadeIn(2000);
+      document.getElementById("status2").style.visibility = 'hidden;'
+      // $("#status2").style.visibility = "hidden";
+      $("#status3").delay(1000).fadeOut(1);
+      $("#status4").delay(1000).fadeOut(1);
+      $("#status5").delay(1000).fadeOut(1);
+      $("#chatbox").delay(4000).fadeIn(3000);
+      $("#story-button").delay(4000).fadeIn(3000);
+      // $("#system-card").fadeIn(150);
+      // $("#brandobot-card").fadeIn(150);
+      // $("#status1").fadeIn(200);
+      // $("#status2").fadeIn(250);
+      // $("#status3").fadeIn(300);
+      // $("#status4").fadeIn(350);
+      // $("#status5").fadeIn(400);
+      // $("#chatbox").fadeIn(300);
+      // $("#story-button").delay(450).fadeIn(200);
+      // $("#textInput").delay(4500).fadeIn(4000);
+      //theButton.parentNode.removeChild(theButton);
+
+
+      
+    }
+    // TESTING SOMETHING HERE
+
+    // PRIMARY FUNCTION TO GET RESPONSE FROM BOT
+    var currentBotText = "BrandoBot? Are you there?"
+
+    function start_intro() {
+      console.log("starting intro");
+      console.log("current bot text = " + currentBotText);
+      reveal_right_panel();
+      // $("#story-button").delay(4500).fadeIn(2000);
+      var userHtml = '<div class="chatBlock-bot">System AI:<div class="botText"><span>' + currentBotText + "</span></div></div>";
+      setTimeout(
+        function () {
+
+          $("#chatbox").append(userHtml);
+          // var showInput = document.getElementById("textInput");
+          // showInput.contentEditable = "true";
+          // showInput.style.display = 'block';
+        }, 0);
+
+
+    }
+
+    function reveal_systems(delayer) {
+      $("#system-card").delay(delayer + 1000).fadeIn(1);
+      $("#status2").delay(delayer + 1000).fadeIn(delayer + 2500);
+      
+      $("#status3").delay(delayer + 1500).fadeIn(delayer + 3000);
+      $("#status4").delay(delayer + 2000).fadeIn(delayer + 3500);
+      $("#status5").delay(delayer + 2500).fadeIn(delayer + 4000);
+      $("#save-chat").delay(delayer + 2700).fadeIn(delayer + 4200);
+      document.getElementById("status2").style.display='flex';
+      document.getElementById("status3").style.display='flex';
+      document.getElementById("status4").style.display='flex';
+      document.getElementById("status5").style.display='flex';
+    }
+   
+    var introState = 0;
+    function get_response() {
+      $("#story-button").fadeOut(10);
+      // document.getElementById("story-button").hidden = true;
+      introState++;
+
+
+      if (introState > 24) {
+        $("#textInput").fadeIn(1500);
+        gamemode = 1;
+      } else {
+        $.get("/intro", { introState: introState }).done(function (introData) {
+          var userInput = document.getElementById('textInput');
+          var rawText = "";
+
+          document
+            .getElementById("chatbox")
+            .scrollIntoView({ block: "end", behavior: "smooth" });
+          $.get("/prediction", {
+            gamemode: gamemode, userText: rawText + " " + currentBotText, historyOn: false, historyLength: 2,
+            temperature: .4, top_k: 50, randomHistory: "random",
+            personalityType: 'None'
+          }).done(function (data) {
+
+
+            var userHtml = '<div class=chatBlock-ai>BrandoBot:<div class="aitext"><span class="text" id="dataText-' + introState + '">' + data + "</span></div></div>";
+            var dataLen = data.length;
+            var storyLen = introData.length;
+            var botHtml = '<div class="chatBlock-bot">System AI:<div class="botText"><span>' + introData + "</span></div></div>";
+            var arr = [userHtml, botHtml];
+            var count = 0;
+            sleep(1000)
+            $("#chatbox").append(userHtml);
+            var changeText = document.getElementById("dataText-" + introState).textContent
+            console.log(changeText)
+
+            $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
+
+            setTimeout(function () {
+
+              $("#chatbox").append(botHtml);
+              $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
+              get_next_story_button()
+              $("#story-button").delay(500 + (storyLen * 10)).fadeIn(300);
+              // $("#story-button").fadeIn(2000);
+            }, 500 + (dataLen * 5))
+            // $("#story-button").fadeIn(200);
+            // }, 2000)
+            //$("#").append(botHtml); 
+            //$("#chatbox").append(userHtml);
+            //$('#textInput').html('');
+            var delayer = 1500 + (dataLen * 5);
+            setTimeout(function () {
               
-              function start_intro() {
-                console.log("starting intro");
-                console.log("current bot text = " + currentBotText);
-                reveal_right_panel();
-                // $("#story-button").delay(4500).fadeIn(2000);
-                var userHtml = '<div class="chatBlock-bot">System AI:<div class="botText"><span>' + currentBotText + "</span></div></div>";
-                setTimeout(
-                  function() 
-                  {
-                    
-                    $("#chatbox").append(userHtml);
-                    // var showInput = document.getElementById("textInput");
-                    // showInput.contentEditable = "true";
-                    // showInput.style.display = 'block';
-                  }, 0);
+              if (introState == 6) {
                 
-                
+                reveal_systems(delayer);
               }
+              }, delayer)
 
-              var introState = 0;
-              function get_response() {
-                $("#story-button").fadeOut(10);
-                // document.getElementById("story-button").hidden = true;
-                introState++;
-                if (introState > 24) {
-                $("#textInput").fadeIn(1500);
-              } else {
-                $.get("/intro", {introState: introState}).done(function(introData) {
-                    var userInput = document.getElementById('textInput');
-                    var rawText = "";
+            currentBotText = introData
+          });
 
-                        document
-                        .getElementById("chatbox")
-                        .scrollIntoView({ block: "end", behavior: "smooth" });
-                    $.get("/prediction", { userText: rawText + " " + currentBotText, historyOn: false, historyLength: 2, 
-                                            temperature: .4, top_k: 50, randomHistory: "random",
-                                            personalityType: 'None'}).done(function(data) {
-                        
-                        
-                        var userHtml = '<div class=chatBlock-ai>BrandoBot:<div class="aitext"><span class="text" id="dataText-' + introState + '">' + data + "</span></div></div>";
-                        var dataLen = data.length;
-                        var storyLen = introData.length;
-                        var botHtml = '<div class="chatBlock-bot">System AI:<div class="botText"><span>' + introData + "</span></div></div>";
-                        var arr = [userHtml, botHtml];
-                        var count = 0;
-                        sleep(1000)
-                        $("#chatbox").append(userHtml);
-                        var changeText = document.getElementById("dataText-"+introState).textContent
-                        console.log(changeText)
-                        const scrambled = () => {
-                              fx.setText(changeText)
-                            };
+        });
 
-                            
-                        $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
-
-                          setTimeout(function() {
-                             
-                              $("#chatbox").append(botHtml);
-                              $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
-                              get_next_story_button()
-                              $("#story-button").delay(500 + (storyLen * 10)).fadeIn(300);
-                              // $("#story-button").fadeIn(2000);
-                            }, 500 + (dataLen * 5))
-                            // $("#story-button").fadeIn(200);
-                            // }, 2000)
-                          //$("#").append(botHtml); 
-                          //$("#chatbox").append(userHtml);
-                          //$('#textInput').html('');
-                          
-
-                    currentBotText = introData
-                    scrambled();
-                 });
-
-                });
-
-               }
-              }
-              function append_chats(data) {
-                console.log("appending data... " + data)
-                $("#chatbox").append(data)
-              }
+      }
+    }
+    function append_chats(data) {
+      console.log("appending data... " + data)
+      $("#chatbox").append(data)
+    }
 
 
-               $(document).on("keypress", function (e) {
-                 if (e.which == 13) {
-                  getBotResponse();
-                 }
-               });
-               function sleep(miliseconds) {
-                  var currentTime = new Date().getTime();
+    $(document).on("keypress", function (e) {
+      if (e.which == 13) {
+        getBotResponse();
+      }
+    });
+    function sleep(miliseconds) {
+      var currentTime = new Date().getTime();
 
-                  while (currentTime + miliseconds >= new Date().getTime()) {
-                  }
-                }
+      while (currentTime + miliseconds >= new Date().getTime()) {
+      }
+    }
 
-                function getBotResponse() {
-                 var rawText = $("#textInput").val();
-                //  var userInput = document.getElementById('textInput');
-                 var userHtml = '<div class=chatBlock-user>Player AI:<div class="userTextInput"><span>' + rawText + "</span></div></div>";
-                 var historyLength = $("#historyLength").val();
-                 var temperature = $("#tempSetting").val();
-                 var top_k = $("#top_kSetting").val();
-                 $('#textInput').val('');
-                 $('#textInput').html('');
-                 console.log(rawText);
-                 $("#chatbox").append(userHtml);
+    function getBotResponse() {
+      var rawText = $("#textInput").val();
+      //  var userInput = document.getElementById('textInput');
+      var userHtml = '<div class=chatBlock-user>Player AI:<div class="userTextInput"><span>' + rawText + "</span></div></div>";
+      var historyLength = $("#historyLength").val();
+      var temperature = $("#tempSetting").val();
+      var top_k = $("#top_kSetting").val();
+      $('#textInput').val('');
+      $('#textInput').html('');
+      console.log(rawText);
+      $("#chatbox").append(userHtml);
 
 
-                 document
-                   .getElementById("chatbox")
-                   .scrollIntoView({ block: "end", behavior: "smooth" });
-                 document
-                   .getElementById("textInput")
-                   .scrollIntoView({ block: "end", behavior: "smooth"});
-                 $('#textInput').val('');
-                 $('#textInput').html('');
+      document
+        .getElementById("chatbox")
+        .scrollIntoView({ block: "end", behavior: "smooth" });
+      document
+        .getElementById("textInput")
+        .scrollIntoView({ block: "end", behavior: "smooth" });
+      $('#textInput').val('');
+      $('#textInput').html('');
 
-                 //$.get("/testing", { msg: testing }).done(function(data) {console.log(data)});
-                 setTimeout(function() {
-                 $.get("/prediction", { userText: rawText, historyOn: 0, historyLength: 2, 
-                                        temperature: .4, top_k: 50, randomHistory: "random",
-                                        personalityType: 'None'}).done(function(data) {
-                    var botHtml = '<div class=chatBlock-ai>BrandoBot: <div class="aitext"><span>' + data + "</span></div></div";
-                    $("#chatbox").append(botHtml);
-                    $('#textInput').val('');
+      //$.get("/testing", { msg: testing }).done(function(data) {console.log(data)});
+      setTimeout(function () {
+        $.get("/prediction", {
+          gamemode: gamemode, userText: rawText, historyOn: 0, historyLength: 2,
+          temperature: .4, top_k: 50, randomHistory: "random",
+          personalityType: 'None'
+        }).done(function (data) {
+          var botHtml = '<div class=chatBlock-ai>BrandoBot: <div class="aitext"><span>' + data + "</span></div></div";
+          $("#chatbox").append(botHtml);
+          $('#textInput').val('');
 
-                    // sleep(500);
+          // sleep(500);
 
-                      
-                    document
-                      .getElementById("textInput")
-                      .scrollIntoView({ block: "end", behavior: "smooth"});
 
-                      document
-                      .getElementById("chatbox")
-                      .scrollIntoView({ block: "end", behavior: "smooth" });
+          document
+            .getElementById("textInput")
+            .scrollIntoView({ block: "end", behavior: "smooth" });
 
-                 });
-                }, 500)
+          document
+            .getElementById("chatbox")
+            .scrollIntoView({ block: "end", behavior: "smooth" });
 
-               }
+        });
+      }, 500)
 
-// ——————————————————————————————————————————————————
-// Save to HTML
-// ——————————————————————————————————————————————————
-function div2html() {
-    var inner = document.getElementById("main");
-    var html = "<html><head>" + 
-    `
+    }
+
+    // ——————————————————————————————————————————————————
+    // Save to HTML
+    // ——————————————————————————————————————————————————
+    function div2html() {
+      var inner = document.getElementById("main");
+      var html = "<html><head>" +
+        `
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/css/bootstrap-slider.min.css" />
 
@@ -499,126 +690,152 @@ function div2html() {
     margin-left:10%
     }
   </style>`
-               + "</head><body>" 
-+ `
+        + "</head><body>"
+        + `
 <div class="container">
 
 
   
   
     <div class="mt-3 box">
-    ` 
-               + inner.innerHTML + "</div></div></body></html>";
-    saveTextAsFile("div2html.html", html);
+    `
+        + inner.innerHTML + "</div></div></body></html>";
+      
+    var today = new Date()
+    time = today.toTimeString().split(':').join('').substr(0, 4),
+    timestamp = getDate('mm-dd-yyyy', today)
+    saveTextAsFile("chatlog "+timestamp+".html", html);
+    }
+    
+
+function getDate (mode, userdate) {
+    var today = new Date()
+    var dte = userdate || new Date(),
+        d = dte.getDate().toString(),
+        m = (dte.getMonth() + 1).toString(),
+        t = today.toTimeString().split(':').join('').substr(0, 6),
+        yyyy = dte.getFullYear().toString(),
+        dd = (d.length < 2) ? '0' + d : d,
+        mm = (m.length < 2) ? '0' + m : m,
+        yy = yyyy.substring(2, 4),
+        t1 = t.substring(0, 2),
+        t2 = t.substring(2, 4),
+        t3 = t.substring(4, 6);
+    switch (mode) {
+        case 'mm-dd-yyyy': return mm + '_' + dd + '_' + yyyy + " " + t1 + "-" + t2 + "-" + t3
+        case 'yyyymmdd': return yyyy + mm + dd;
+        default: return dte;
+    }
 }
 
-
-function saveTextAsFile(fileNameToSaveAs, textToWrite) {
-    var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
+    function saveTextAsFile(fileNameToSaveAs, textToWrite) {
+      var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
         ie11 = navigator.userAgent.match(/Trident\/7.0/) && navigator.userAgent.match(/rv:11/),
         ieEDGE = navigator.userAgent.match(/Edge/g),
         ieVer = (ie ? ie[1] : (ie11 ? 11 : (ieEDGE ? 12 : -1)));
 
-    if (ie && ieVer < 10) {
+      if (ie && ieVer < 10) {
         console.log("No blobs on IE ver<10");
         return;
-    }
+      }
 
-    var textFileAsBlob = new Blob([textToWrite], {
+      var textFileAsBlob = new Blob([textToWrite], {
         type: 'text/plain'
-    });
+      });
 
-    if (ieVer > -1) {
+      if (ieVer > -1) {
         window.navigator.msSaveBlob(textFileAsBlob, fileNameToSaveAs);
 
-    } else {
+      } else {
         var downloadLink = document.createElement("a");
         downloadLink.download = fileNameToSaveAs;
         downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
         downloadLink.onclick = function (e) {
-            document.body.removeChild(e.target);
+          document.body.removeChild(e.target);
         };
         downloadLink.style.display = "none";
         document.body.appendChild(downloadLink);
         downloadLink.click();
-    }
-}
-// ——————————————————————————————————————————————————
-// TextScramble
-// ——————————————————————————————————————————————————
-
-class TextScramble {
-  constructor(el) {
-    this.el = el;
-    this.chars = '!<>-_\\/[]{}—=+*^?#________';
-    this.update = this.update.bind(this);
-  }
-  setText(newText) {
-    const oldText = this.el.innerText;
-    const length = Math.max(oldText.length, newText.length);
-    const promise = new Promise(resolve => this.resolve = resolve);
-    this.queue = [];
-    for (let i = 0; i < length; i++) {
-      const from = oldText[i] || '';
-      const to = newText[i] || '';
-      const start = Math.floor(Math.random() * 40);
-      const end = start + Math.floor(Math.random() * 40);
-      this.queue.push({ from, to, start, end });
-    }
-    cancelAnimationFrame(this.frameRequest);
-    this.frame = 0;
-    this.update();
-    return promise;
-  }
-  update() {
-    let output = '';
-    let complete = 0;
-    for (let i = 0, n = this.queue.length; i < n; i++) {
-      let { from, to, start, end, char } = this.queue[i];
-      if (this.frame >= end) {
-        complete++;
-        output += to;
-      } else if (this.frame >= start) {
-        if (!char || Math.random() < 0.28) {
-          char = this.randomChar();
-          this.queue[i].char = char;
-        }
-        output += `<span class="dud">${char}</span>`;
-      } else {
-        output += from;
       }
     }
-    this.el.innerHTML = output;
-    if (complete === this.queue.length) {
-      this.resolve();
-    } else {
-      this.frameRequest = requestAnimationFrame(this.update);
-      this.frame++;
+    // ——————————————————————————————————————————————————
+    // TextScramble
+    // ——————————————————————————————————————————————————
+
+    class TextScramble {
+      constructor(el) {
+        this.el = el;
+        this.chars = '!<>-_\\/[]{}—=+*^?#________';
+        this.update = this.update.bind(this);
+      }
+      setText(newText) {
+        const oldText = this.el.innerText;
+        const length = Math.max(oldText.length, newText.length);
+        const promise = new Promise(resolve => this.resolve = resolve);
+        this.queue = [];
+        for (let i = 0; i < length; i++) {
+          const from = oldText[i] || '';
+          const to = newText[i] || '';
+          const start = Math.floor(Math.random() * 40);
+          const end = start + Math.floor(Math.random() * 40);
+          this.queue.push({ from, to, start, end });
+        }
+        cancelAnimationFrame(this.frameRequest);
+        this.frame = 0;
+        this.update();
+        return promise;
+      }
+      update() {
+        let output = '';
+        let complete = 0;
+        for (let i = 0, n = this.queue.length; i < n; i++) {
+          let { from, to, start, end, char } = this.queue[i];
+          if (this.frame >= end) {
+            complete++;
+            output += to;
+          } else if (this.frame >= start) {
+            if (!char || Math.random() < 0.28) {
+              char = this.randomChar();
+              this.queue[i].char = char;
+            }
+            output += `<span class="dud">${char}</span>`;
+          } else {
+            output += from;
+          }
+        }
+        this.el.innerHTML = output;
+        if (complete === this.queue.length) {
+          this.resolve();
+        } else {
+          this.frameRequest = requestAnimationFrame(this.update);
+          this.frame++;
+        }
+      }
+      randomChar() {
+        return this.chars[Math.floor(Math.random() * this.chars.length)];
+      }
     }
-  }
-  randomChar() {
-    return this.chars[Math.floor(Math.random() * this.chars.length)];
-  }}
 
 
-// ——————————————————————————————————————————————————
-// Example
-// ——————————————————————————————————————————————————
+    // ——————————————————————————————————————————————————
+    // Example
+    // ——————————————————————————————————————————————————
 
-phrases = document.getElementById("clickBegin").textContent
+    phrases = document.getElementById("clickBegin").textContent
 
-const el = document.querySelector('.text');
-const fx = new TextScramble(el);
+    const el = document.querySelector('.text');
+    const fx = new TextScramble(el);
 
-let counter = 0;
-const next = () => {
-  fx.setText(phrases)
-};
+    let counter = 0;
+    const next = () => {
+      fx.setText(phrases)
+    };
 
-next();
+    next();
 
-                              
-            </script>
 
-   </body>
+  </script>
+
+</body>
+
 </html>

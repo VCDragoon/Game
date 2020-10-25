@@ -24,7 +24,7 @@
     }
     
     #textInput {
-   font-family: Fira Code,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+        font-family: 'IBM Plex Serif';
    font-weight: 500;
    overflow: auto;
    padding: .375rem .75rem;
@@ -41,10 +41,10 @@
     }
 
 .chatBlock-bot {
-    font-family: Fira Code,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+    font-family: 'IBM Plex Serif';
     font-weight: 500;
     font-size: 1rem;
-    line-height: 1rem;
+    line-height: 1.3rem;
     word-break: break-word;
     text-align: justify;
     color: #d0cce4;
@@ -55,10 +55,10 @@
 }
 
 .chatBlock-ai {
-    font-family: Fira Code,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+    font-family: 'IBM Plex Serif';
     font-weight: 500;
     font-size: 1rem;
-    line-height: 1rem;
+    line-height: 1.3rem;
     word-break: break-word;
     text-align: justify;
     color: #a8cefa;
@@ -70,10 +70,10 @@
 
 
 .chatBlock-user {
-    font-family: Fira Code,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+    font-family: 'IBM Plex Serif';
     font-weight: 500;
     font-size: 1rem;
-    line-height: 1rem;
+    line-height: 1.3rem;
     word-break: break-word;
     text-align: justify;
     color: #cbf7cd;
@@ -152,7 +152,7 @@
     }
     .box {
     overflow: auto;
-    max-height: 45rem;
+    max-height: 40rem;
     }
 
     ::-webkit-scrollbar-track

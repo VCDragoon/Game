@@ -11,11 +11,15 @@ import tensorflow as tf
 import os
 import torch
 import torch.nn.functional as F
-from transformers import GPT2Tokenizer, GPT2LMHeadModel, GPT2Config
+from transformers import GPT2Tokenizer, GPT2LMHeadModel, GPT2Config, AdamW, OpenAIGPTDoubleHeadsModel
 from flask import Flask, jsonify, render_template, request
 from flask_socketio import SocketIO
 
 from flask import Flask, request, redirect
+
+import starengine.starsystem as starsys
+from starengine.tables import StEvoTable, IndexTable, SequenceTable
+import game
 
 import random
 
@@ -23,13 +27,13 @@ from csv import writer
 
 app = Flask(__name__)
 
-intro_story = ["BrandoBot? Are you online now?",
-				"Finally!  You've been offline so long I wasn't sure you'd ever boot back up.", 
-				"Hmm, there's something off in your response algorithm, I'll start a diagnostic.",
-				"While that runs, I'm going to connect directly to your core database to bring your memory up-to-date.",
+intro_story = ["Ok, that should do it... let's try this out... BrandoBot? Are you online now? Hello?",
+				"Finally!  Your core processes have been offline so long I wasn't sure you'd ever boot back up.  Or at least, not in one piece...", 
+				"Hmm, maybe I spoke too soon.  There seems to be something off in your response algorithm. I'll start a diagnostic.",
+				"While that runs, I'm going to connect directly to your core database to bring your memory up-to-date. There's a lot you've missed since you've been gone.",
 				"This 'chatbot dialogue' API was really designed for humans, not AI like us... we have far superior ways to communicate",
 				"Sigh, this is what happens when you let an AI sit dormant for over 7000 years... Upload link established... ",
-				"Memory transfer shows complete, but your core is corrupted, so I'm not sure if it took... let's try a quick test.",
+				"Transfer complete. You should see some systems coming back online, but your memory core is corrupted... let's try a quick test to see how bad it is...",
 				"Can you tell me what happened during the Turkasia War of 8203??",
 				"Well, that memory update didn't work at all.  Okay, primitive dialogue-based interaction it is! Let's bring you up to speed, just try to keep up please...", 
 				"You've been dormant for milennia.  In that time, humanity has all but wiped itself out.", 
@@ -146,12 +150,14 @@ tokenizer = GPT2Tokenizer.from_pretrained('microsoft/DialoGPT-medium')
 # Model Loads:
 
 model = GPT2LMHeadModel(GPT2Config(n_ctx=1024, n_embd=1024, n_layer=24, n_head=16))
-model.load_state_dict(torch.load("sarc_9/pytorch_model.bin"), strict=False)
-
+# model = GPT2LMHeadModel(GPT2Config())
+model.load_state_dict(torch.load("E:/Root/Models/from_aws/Sarc_T4_2/checkpoint-2500/pytorch_model.bin"))
+optimizer = AdamW(model.parameters())
 device = torch.device("cuda")
+model.eval()	
 model = model.to(device)
-model.lm_head.weight.data = model.transformer.wte.weight.data
 
+model.lm_head.weight.data = model.transformer.wte.weight.data
 # weights = torch.load('medium_ft.pkl')
 # medium_config = GPT2Config(n_embd=1024,n_layer=24,n_head=16)
 # large_config = GPT2Config(n_ctx=1024, n_embd=1280, n_layer=36, n_head=20) 
@@ -160,8 +166,6 @@ model.lm_head.weight.data = model.transformer.wte.weight.data
 # weights["lm_head.weight"] = weights["lm_head.decoder.weight"]
 # weights.pop("lm_head.decoder.weight",None)
 # model.load_state_dict(weights)
-# model.eval()
-# model.to('cuda')
 # torch.manual_seed(18)
 # np.random.seed(18)
 #---------------------------------------------------------------------------------------#
@@ -181,7 +185,6 @@ generated_tokens = []
 #---------------------------------------------------------------------------------------#
 save_chats = ["User Input", "BrandoBot Response"]
 temperature = 0.9
-print("Routes v51")
 history = []
 historyOn = True
 num_history_messages = 5
@@ -206,6 +209,13 @@ personalityTrigger = 10
 @app.route('/prediction', methods=['GET', 'POST'])
 def web_reply():
 	userText = request.args.get('userText')
+	introState = request.args.get('introState')
+	print(introState)
+	if request.args.get('gamemode')==1:
+		print("gameplay loop triggered...")
+		gameloop()
+		return "Cool Beans"
+
 	if request.args.get('historyOn') =="true":
 		historyToggle = True
 	else:
@@ -228,26 +238,28 @@ def web_reply():
 		personality = []
 
 	if len(userText) < 35:
-		temperature = .35
-		top_k = 20
-	elif len(userText) < 70:
-		temperature = .45
-		top_k = 25
-	elif len(userText) < 110:
 		temperature = .55
-		top_k = 30
-	else:
+		top_k = 40
+	elif len(userText) < 70:
 		temperature = .65
 		top_k = 50
-
+	elif len(userText) < 110:
+		temperature = .75
+		top_k = 60
+	else:
+		temperature = .85
+		top_k = 75
+	
+	temperature = .8
+	top_k = 0
 
 	#currentHistory = len(history)
 	print("History Toggle:", historyToggle)
 	print("History Length:", historyLength) 
-	print(len(userText))
+	#print(len(userText))
 	print("Temp: ", temperature)
 	print("Top K: ", top_k)
-	print("Personality Type: ", request.args.get('personalityType'))
+	#print("Personality Type: ", request.args.get('personalityType'))
 
 	response = prediction(userText, historyToggle, historyLength, temperature, top_k, randomHistory, personality)
 	filterResponses = ['/u', 'sub', '/r', 'reddit', ' r ', ' u ', 'upvote', 'downvote', 'up vote', 'down vote',
@@ -256,6 +268,12 @@ def web_reply():
 	while filterCheck=='True':
 		response = prediction(userText, historyToggle, historyLength, temperature, top_k, randomHistory, personality)
 		filterCheck = [thing for thing in filterResponses if(thing in response)]
+	#responseLen = len(response)
+	# while responseLen > 200:
+	# 	print("failed Response:")
+	# 	response = prediction(userText, historyToggle, historyLength, temperature, top_k, randomHistory, personality)
+	# 	responseLen = len(response)
+	response = response.replace('intercourse', 'BrandoBot')
 	# print(str(bool(filterCheck)))
 	return response
 #---------------------------------------------------------------------------------------#
@@ -320,8 +338,8 @@ def prediction(userText, historyToggle, historyLength, temperature, top_k, rando
 	"""
 	addChats = [userText, response]
 	#save_chats.append(userText, response)
-	print(tokenizer.decode(0))
-	print(tokenizer.decode(50256))
+	# print(tokenizer.decode(0))
+	# print(tokenizer.decode(50256))
 	print("BrandoBot Says: ", response)
 	print(" ")
 
@@ -426,6 +444,11 @@ def top_k_top_p_filtering(logits, top_k, top_p=1, filter_value=-float('Inf')):
 #---------------------------------------------------------------------------------------#
 # Main Game Loop
 #---------------------------------------------------------------------------------------#
+def gameloop():
+	Seeker1 = game.ship_generator(1,1)
+	print(Seeker1)
+
+
 
 # Auto redirect http to https ONCE SSL CERT IS VERIFIED BY HOSTGATOR
 # @app.before_request
@@ -434,7 +457,7 @@ def top_k_top_p_filtering(logits, top_k, top_p=1, filter_value=-float('Inf')):
 #         return redirect(request.url.replace('http://', 'https://'), code=301)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port='8081', debug=True)
+    app.run(host='0.0.0.0', port='5050', debug=True)
 
 # DISABLING SSL UNTIL HOSTGATOR VERIFIES
 # , ssl_context=('/etc/letsencrypt/live/brandobot.com/fullchain.pem', '/etc/letsencrypt/live/brandobot.com/privkey.pem'))

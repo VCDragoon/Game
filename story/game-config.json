@@ -1,0 +1,62 @@
+{
+    "planet_attributes": {
+        
+        "biological": {
+            "good_types": [
+                "Biochemical Activity", 
+                "Organics"],
+
+            "bad_types": [
+                "None", 
+                "Isotopes"],
+
+            "neutral_types": []
+        },
+
+        "core":{
+            "good_types": [
+                "Terrestrial"],
+
+            "bad_types": [
+                "Gas",
+                "Liquid"],
+            
+            "neutral_types": []
+        },
+
+        "temperature":{
+            "good_types": [
+                "Mild"],
+
+            "bad_types": [
+                "Frozen",
+                "Scorching"],
+            
+            "neutral_types": [
+                "Cold",
+                "Hot"]
+        },
+
+        "atmosphere":{
+            "good_types": [
+                "Breathable"],
+
+            "bad_types": [
+                "None",
+                "Toxic"],
+            
+            "neutral_types": []
+        },
+
+        "gravity":{
+            "good_types": [
+                "Moderate"],
+
+            "bad_types": [
+                "Minimal",
+                "Heavy"],
+            
+            "neutral_types": []
+        }
+    }
+}
