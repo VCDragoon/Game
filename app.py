@@ -156,7 +156,7 @@ tokenizer = GPT2Tokenizer.from_pretrained('microsoft/DialoGPT-medium')
 
 model = GPT2LMHeadModel(GPT2Config(n_ctx=1024, n_embd=1024, n_layer=24, n_head=16))
 # model = GPT2LMHeadModel(GPT2Config())
-model.load_state_dict(torch.load("E:/Root/Models/from_aws/Sarc_T4_2/checkpoint-2500/pytorch_model.bin"))
+model.load_state_dict(torch.load("/home/ubuntu/models/checkpoint-2500/pytorch_model.bin"))
 optimizer = AdamW(model.parameters())
 device = torch.device("cuda")
 model.eval()	
