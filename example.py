@@ -50,4 +50,4 @@ print("  ---------\n")
 
 #star.stars[i].print_info()
 print('Total number of cycles: {}'.format(cycle_num))
-#mysys.write_latex()
+mysys.write_latex()

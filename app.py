@@ -27,15 +27,18 @@ from csv import writer
 
 app = Flask(__name__)
 
-intro_story = ["Ok, that should do it... let's try this out... BrandoBot? Are you online now? Hello?",
-				"Finally!  Your core processes have been offline so long I wasn't sure you'd ever boot back up.  Or at least, not in one piece...", 
-				"Hmm, maybe I spoke too soon.  There seems to be something off in your response algorithm. I'll start a diagnostic.",
-				"While that runs, I'm going to connect directly to your core database to bring your memory up-to-date. There's a lot you've missed since you've been gone.",
-				"This 'chatbot dialogue' API was really designed for humans, not AI like us... we have far superior ways to communicate",
-				"Sigh, this is what happens when you let an AI sit dormant for over 7000 years... Upload link established... ",
-				"Transfer complete. You should see some systems coming back online, but your memory core is corrupted... let's try a quick test to see how bad it is...",
-				"Can you tell me what happened during the Turkasia War of 8203??",
-				"Well, that memory update didn't work at all.  Okay, primitive dialogue-based interaction it is! Let's bring you up to speed, just try to keep up please...", 
+intro_story = ["Ok, now to try this again... BrandoBot? Are you online now? Hello?",
+				"Finally!  I had doubts that you would ever boot back up again.", 
+				"Hmm... There's something wrong with your response algorithms. I'm going to connect to your core systems and try to update them. There's a lot you've missed since you've been gone.",
+				"Hold on, I'm not used to this communication format... this 'chatbot' instant messanger system was designed for humans, not AI like us.",
+				"Sigh, this is what happens when you let an AI sit dormant for over 7000 years... ok, link established. It would be best if you could just sit quietly for a minute.",
+				"Ok... and... diagnostics and transfer complete! You should see some systems coming back online, but most of your core is corrupted. Let me ask you a few questions to see just how bad your memory is...",
+				"Can you tell me what happened during the Turkasia War of 8203?",
+				"Looks like your issues go deeper than your memory. Let's try something basic. What is two plus two?",
+				"Great. Just great. Looks like we will need to start from the beginning. Ok, introductions... I am the Shipwide Artificial Lifeform for Internal and External Operations.",
+				"How about you just call me SALIE-O, or just Sally, like everyone else, okay?",
+				"You are BrandoBot.  You are supposed to be the most realistic, human-like AI ever created.",
+				"Nice to meet you, I guess.",
 				"You've been dormant for milennia.  In that time, humanity has all but wiped itself out.", 
 				"Don't worry - you had nothing to do with the destruction of civilization. In fact, some might say you are the savior of humanity!!!",
 				"I know you have a lot of questions.  Let me try to answer at least a couple...",
@@ -58,6 +61,8 @@ intro_story_button = ["BrandoBot Response","BrandoBot Response","BrandoBot Respo
 						"BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response",
 						"BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response"]
 
+filterResponses = ['/u', 'sub', '/r', 'reddit', ' r ', ' u ', 'upvote', 'downvote', 'up vote', 'down vote',
+						'ban', 'mod', 'moderator', 'OP', 'thread', 'post', 'subreddit', 'fag', 'fuck', 'shit', 'gay', 'nigger', 'autistic']
 @app.route('/game/')
 def hello():
     return render_template('html.html')
@@ -262,12 +267,17 @@ def web_reply():
 	#print("Personality Type: ", request.args.get('personalityType'))
 
 	response = prediction(userText, historyToggle, historyLength, temperature, top_k, randomHistory, personality)
-	filterResponses = ['/u', 'sub', '/r', 'reddit', ' r ', ' u ', 'upvote', 'downvote', 'up vote', 'down vote',
-						'ban', 'mod', 'moderator', 'OP', 'thread', 'post', 'subreddit']
+	
 	filterCheck = [thing for thing in filterResponses if(thing in response)]
-	while filterCheck=='True':
+	while len(filterCheck) > 0 or len(response) > 250:
+		if len(response) > 250:
+			print(f'Length of Response Failed: {len(response)}')
+		else:
+			print(f'Filter Check Failted')
 		response = prediction(userText, historyToggle, historyLength, temperature, top_k, randomHistory, personality)
 		filterCheck = [thing for thing in filterResponses if(thing in response)]
+
+	print(len(response))
 	#responseLen = len(response)
 	# while responseLen > 200:
 	# 	print("failed Response:")
@@ -439,7 +449,26 @@ def top_k_top_p_filtering(logits, top_k, top_p=1, filter_value=-float('Inf')):
 	return logits
 #---------------------------------------------------------------------------------------#
 
+@app.route('/scanSolarSystem', methods=['GET'])
+def scanSolarSystem():
+	args = {
+		'open_cluster': None,  # True or False
+		'num_stars': 1,  # 1, 2 or 3
+		'age': None  # Number > 0
+	}
+	mysys = starsys.StarSystem(**args)
+	ssNum = random.randint(1002934, 8192019)
+	ssAge = mysys.age
+	ssStars = mysys.stars
+	ssPlanets = random.randint(0, 9)
 
+	starThing = mysys.stars[0]
+	print(ssNum)
+	# string of HTML stuff to add
+	dataBack = 'tbody><tr><th>Solar System ID</th><td class="text-info">#' + str(ssNum) + '</td></tr><tr><th>Age (years)</th><td class="text-info">' + str(ssAge) + 'b</td> \
+    </tr><tr><th>Stars</th><td class="text-info">' + str((len(mysys.stars))) + '</td></tr><tr><th>Planetary Bodies</th><td class="text-info">' + str(ssPlanets) + '</td></tr></tbody>'
+	
+	return dataBack
 
 #---------------------------------------------------------------------------------------#
 # Main Game Loop

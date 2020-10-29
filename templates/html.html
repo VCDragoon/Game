@@ -136,70 +136,112 @@
                   data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                     <div  >
                       <h6 class="my-0">Solar System Scanner</h6>
-                      <!-- <small class="text-muted">Update: <a class="text-warning">Unavailable</a></small> -->
                     </div>
                       <a class="text-danger">OFFLINE</a>
                 </li>
-
-
-              <!-- Dropdown Contents -->
-                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
-                      <div>
-                        <h6 class="my-0">Solar System #819920-B</h6>
-                        <small class="text-muted">Age: <a class="text-info">7.2b</a> </small>
-
+                  <!-- Dropdown Contents -->
+                  <li class="d-flex justify-content-between lh-condensed"></li>
+                      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                          <div class="btn btn-primary" type="button" id="scan-solarsystem" onClick="runSolarSystemScan()">
+                            Run Scan
+                          </div>
+                          <table class="table" id="ssInfo">
+                            <tbody>
+                              <tr>
+                                <th>Solar System ID</th>
+                                <td class="text-info">#819920-B</td>
+                              </tr>
+                              <tr>
+                                <th>Age (years)</th>
+                                <td class="text-info">7.2b</td>
+                              </tr>
+                              <tr>
+                                <th>Stars</th>
+                                <td class="text-info">1</td>
+                              </tr>
+                              <tr>
+                                <th>Planetary Bodies</th>
+                                <td class="text-info"> 7</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
-                      <div>
-                        <small class="text-muted">Stars: <a class="text-info">1</a> </small>
-                      </div>
-                      <div>
-                        <small class="text-muted">Planetary Bodies: <a class="text-info">6</a> </small>
-                      </div>
-                    </div>
-                  </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="false" aria-controls="collapseTwo">
-                    Collapsible Group Item #2
-                  </button>
-                </h5>
-              </div>
-            </div>
-              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                  Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                  shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                  proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                  aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    
                 </div>
+            <!-- Second Dropdown -->
+            <li role="button" class="list-group-item d-flex justify-content-between lh-condensed" 
+            data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <div  >
+                <h6 class="my-0">Planetary Scanner</h6>
               </div>
-            
-            <div class="card">
-              <div class="card-header" id="headingThree">
-                <h5 class="mb-0">
-                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
-                    aria-expanded="false" aria-controls="collapseThree">
-                    Collapsible Group Item #3
-                  </button>
-                </h5>
-              </div>
-              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                  Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                  shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                  proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                  aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-              </div>
+                <a class="text-danger">OFFLINE</a>
+          </li>
+          <!-- Dropdown Content -->
+          <li class="d-flex justify-content-between lh-condensed"></li>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+
+
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th>Solar System ID</th>
+                    <td class="text-info">#819920-B</td>
+                  </tr>
+                  <tr>
+                    <th>Age (years)</th>
+                    <td class="text-info">7.2b</td>
+                  </tr>
+                  <tr>
+                    <th>Stars</th>
+                    <td class="text-info">1</td>
+                  </tr>
+                  <tr>
+                    <th>Planetary Bodies</th>
+                    <td class="text-info"> 7</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
+          </div>
+          <!-- Third Dropdown -->
+          <li role="button" class="list-group-item d-flex justify-content-between lh-condensed" 
+          data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <div  >
+              <h6 class="my-0">Internal System Scanner</h6>
+            </div>
+              <a class="text-danger">OFFLINE</a>
+        </li>
+        <!-- Dropdown Content -->
+        <li class="d-flex justify-content-between lh-condensed"></li>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+          <div class="card-body">
+
+            <table class="table" >
+              <tbody>
+                <tr>
+                  <th>Solar System ID</th>
+                  <td class="text-info">#819920-B</td>
+                </tr>
+                <tr>
+                  <th>Age (years)</th>
+                  <td class="text-info">7.2b</td>
+                </tr>
+                <tr>
+                  <th>Stars</th>
+                  <td class="text-info">1</td>
+                </tr>
+                <tr>
+                  <th>Planetary Bodies</th>
+                  <td class="text-info"> 7</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
             </ul>
           </div>
         </div>
@@ -209,7 +251,7 @@
           <div class="mt-3 box" id="main">
             <div id="chatbox" class="border border-primary" style="display: none">
             </div>
-            <div id="scrollToMe"></div>
+            
           </div>
           <div class="mt-3 form-group" id="textArea">
             <div>
@@ -220,12 +262,12 @@
                 onClick="get_response()" aria-pressed="false">
                 BrandoBot Response
               </button>
-
+              
             </div>
           </div>
         </div>
       </div>
-
+      <div id="scrollToMe"></div>
 
 
       <div class="col-md-3">
@@ -233,9 +275,9 @@
         <!-- Intro Button -->
         <div class="mt-3" id="card-col-3">
           <div class="card-body" id="intro-button-card">
-            <h5 class="card-title text">Click to begin...</h5>
+            <h5 class="card-title text"></h5>
             <button class="btn btn-primary" type="button" id="introButton" onClick="start_intro()" aria-pressed="false">
-              Wake Up
+              Power On
             </button>
 
             <button class="btn btn-primary" type="button" id="skipIntroBtn" onClick="skip_intro()" aria-pressed="false">
@@ -321,6 +363,7 @@
       p.appendChild(newElement);
     }
     var storyCounter = 0
+
     function get_next_story_button() {
       storyCounter++
       $.get("/storyButton", { storyCounter: storyCounter }).done(function (data) {
@@ -345,7 +388,8 @@
       introState = 24
       console.log("skipping intro");
       reveal_right_panel();
-      var userHtml = '<div class="chatBlock-bot">System AI:<div class="botText"><span>' + "I'm detecting another consciousness with us..." + "</span></div></div>";
+      reveal_systems(100);
+      var userHtml = '<div class="chatBlock-bot">SALIE-O AI:<div class="botText"><span>' + "I'm detecting another consciousness with us..." + "</span></div></div>";
       setTimeout(
         function () {
 
@@ -395,14 +439,14 @@
     // TESTING SOMETHING HERE
 
     // PRIMARY FUNCTION TO GET RESPONSE FROM BOT
-    var currentBotText = "BrandoBot? Are you there?"
+    var currentBotText = "Ok, let's try this again... BrandoBot? Are you online now? Hello?"
 
     function start_intro() {
       console.log("starting intro");
       console.log("current bot text = " + currentBotText);
       reveal_right_panel();
       // $("#story-button").delay(4500).fadeIn(2000);
-      var userHtml = '<div class="chatBlock-bot">System AI:<div class="botText"><span>' + currentBotText + "</span></div></div>";
+      var userHtml = '<div class="chatBlock-bot">SALIE-O AI:<div class="botText"><span>' + currentBotText + "</span></div></div>";
       setTimeout(
         function () {
 
@@ -415,6 +459,7 @@
 
     }
 
+      var typingIndicator = '<div id="typing-indicator" class="typing-indicator"><span></span><span></span><span></span></div>'
     function reveal_systems(delayer) {
       $("#system-card").delay(delayer + 1000).fadeIn(1);
       $("#status2").delay(delayer + 1000).fadeIn(delayer + 2500);
@@ -428,7 +473,12 @@
       document.getElementById("status4").style.display='flex';
       document.getElementById("status5").style.display='flex';
     }
-   
+
+    function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
     var introState = 0;
     function get_response() {
       $("#story-button").fadeOut(10);
@@ -444,9 +494,12 @@
           var userInput = document.getElementById('textInput');
           var rawText = "";
 
+          $("#chatbox").append(typingIndicator)
           document
             .getElementById("chatbox")
             .scrollIntoView({ block: "end", behavior: "smooth" });
+            $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
+          var storyButt = document.getElementById("scrollToMe");
           $.get("/prediction", {
             gamemode: gamemode, userText: rawText + " " + currentBotText, historyOn: false, historyLength: 2,
             temperature: .4, top_k: 50, randomHistory: "random",
@@ -457,33 +510,52 @@
             var userHtml = '<div class=chatBlock-ai>BrandoBot:<div class="aitext"><span class="text" id="dataText-' + introState + '">' + data + "</span></div></div>";
             var dataLen = data.length;
             var storyLen = introData.length;
-            var botHtml = '<div class="chatBlock-bot">System AI:<div class="botText"><span>' + introData + "</span></div></div>";
+            var botHtml = '<div class="chatBlock-bot">SALIE-O AI:<div class="botText"><span>' + introData + "</span></div></div>";
             var arr = [userHtml, botHtml];
             var count = 0;
+            var typingIndc = document.getElementById("typing-indicator");
+              removeAllChildNodes(typingIndc);
+              typingIndc.remove();
             sleep(1000)
             $("#chatbox").append(userHtml);
             var changeText = document.getElementById("dataText-" + introState).textContent
             console.log(changeText)
 
             $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
-
+            
             setTimeout(function () {
+
 
               $("#chatbox").append(botHtml);
               $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
-              get_next_story_button()
-              $("#story-button").delay(500 + (storyLen * 10)).fadeIn(300);
+              
               // $("#story-button").fadeIn(2000);
-            }, 500 + (dataLen * 5))
+              // storyButt.scrollIntoView({ block: "end", behavior: "smooth" });
+                  setTimeout(function(){
+                      get_next_story_button();
+                        $("#story-button").fadeIn(10);
+                          setTimeout(function() {
+                              document.getElementById("scrollToMe").scrollIntoView({ block: "end", behavior: "smooth" });
+                              console.log("scolling")
+                              var y = $(window).scrollTop();  //your current y position on the page
+                              $(window).scrollTop(y+10);
+                        },500);
+              }, 500 + (storyLen * 10));
+              
+            }, 2500 + (dataLen * 10))
+
+            
+
             // $("#story-button").fadeIn(200);
             // }, 2000)
+            
             //$("#").append(botHtml); 
             //$("#chatbox").append(userHtml);
             //$('#textInput').html('');
-            var delayer = 1500 + (dataLen * 5);
+            var delayer = 2500 + (dataLen * 15);
             setTimeout(function () {
               
-              if (introState == 6) {
+              if (introState >4 ) {
                 
                 reveal_systems(delayer);
               }
@@ -512,8 +584,22 @@
 
       while (currentTime + miliseconds >= new Date().getTime()) {
       }
-    }
+    };
 
+
+
+// SOLAR SYSTEM SCANNER
+
+    function runSolarSystemScan() {
+      dummyVar = 0
+      removeAllChildNodes(document.getElementById('ssInfo'));
+      $.get("/scanSolarSystem", {
+        dummyVar: dummyVar
+      }).done(function (data) {
+        var ssHtml = data;
+        $('#ssInfo').append(data)
+      })
+    };
     function getBotResponse() {
       var rawText = $("#textInput").val();
       //  var userInput = document.getElementById('textInput');
@@ -727,6 +813,8 @@ function getDate (mode, userdate) {
         default: return dte;
     }
 }
+
+
 
     function saveTextAsFile(fileNameToSaveAs, textToWrite) {
       var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
