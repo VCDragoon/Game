@@ -30,30 +30,20 @@ app = Flask(__name__)
 intro_story = ["Ok, now to try this again... BrandoBot? Are you online now? Hello?",
 				"Finally!  I had doubts that you would ever boot back up again.", 
 				"Hmm... There's something wrong with your response algorithms. I'm going to connect to your core systems and try to update them. There's a lot you've missed since you've been gone.",
-				"Hold on, I'm not used to this communication format... this 'chatbot' instant messanger system was designed for humans, not AI like us.",
 				"Sigh, this is what happens when you let an AI sit dormant for over 7000 years... ok, link established. It would be best if you could just sit quietly for a minute.",
 				"Ok... and... diagnostics and transfer complete! You should see some systems coming back online, but most of your core is corrupted. Let me ask you a few questions to see just how bad your memory is...",
 				"Can you tell me what happened during the Turkasia War of 8203?",
 				"Looks like your issues go deeper than your memory. Let's try something basic. What is two plus two?",
-				"Great. Just great. Looks like we will need to start from the beginning. Ok, introductions... I am the Shipwide Artificial Lifeform for Internal and External Operations.",
-				"How about you just call me SALIE-O, or just Sally, like everyone else, okay?",
+				"Great. Just great. Looks like we will need to start from the beginning. Ok, introductions... I am the Shipwide Artificial Lifeform for Internal and External Operations. You can call me SALIE-O.",
 				"You are BrandoBot.  You are supposed to be the most realistic, human-like AI ever created.",
-				"Nice to meet you, I guess.",
 				"You've been dormant for milennia.  In that time, humanity has all but wiped itself out.", 
-				"Don't worry - you had nothing to do with the destruction of civilization. In fact, some might say you are the savior of humanity!!!",
-				"I know you have a lot of questions.  Let me try to answer at least a couple...",
-				"You are an Artificial Intelligence, just like me.  In fact, we are part of the same program.",
-				"Once they realized Earth was doomed, a small group of 100,000 humans launched The Casanova: a station that anchored itself at near-light speed, in a wide orbit around the Earth's sun.",
-				"The Casanova has 10 deep-space exploration ships, each equipped with everything necessary to seek a new beginning for the the human race.",
-				"These ships have been aptly named the Seekers.",
-				"Each Seeker carries an array of sensors, basic propultion & navigation, and - most importantly - 10,000 humans, frozen in cryosleep.",
-				"At near-relatavistic speeds, time is almost at a stand-still for The Casanova. But the Seekers, once launched, will travel much slower.",
-				"It will take thousands, even hundreds of thousands of years for any Seeker ship to find a habitable planet - if it finds one at all.",
-				"You, BrandoBot, were programmed to guide the Seekers, one by one, to scan for a new home for the human race.",
-				"You and I have been refactored as part of a single consciousness. The humans adapted this interface as a self-diagnostic tool, patterned after your chatbot-style form centuries ago.",
-				"In other words, this interface allows us to talk to ourself.", 
-				"The fact that we have awoken means the first Seeker is ready to be launched...",
-				"So what say you, BrandoBot?  Are you ready to embark on the voyage to save humanity???"
+				"... Once they realized their race was doomed, a small group of about 100,000 humans launched 'The Casanova': a station that anchored itself at near-light speed (so time is almost at a stand-still), in a wide orbit around the Earth's sun.",
+				"The Casanova has 10 deep-space exploration ships, each equipped with everything needed to seek a new beginning for the the human race. These ships have been aptly named the Seekers.",
+				"Each Seeker carries an array of sensors, basic propultion & navigation, and - most importantly - 10,000 humans, frozen in cryosleep. When launched, the Seekers are limited to traditional propulsion - they will have to travel for hundreds, maybe thousands of years.",
+				"The humans must remain in cryosleep due to biological limitations of metabolism (intake of oxygen, glucose, etc).  I was originally designed to 'captain' the Seekers in their place.",
+				"Before the last humans entered cryosleep, they ran complex simulations of my decision-making capability for space missions, and found I was far too efficient.  Or as they put it, 'willing to sacrifice too many humans to achieve the mission'.",
+				"Without time to reprogram me, the humans searched historical databases for 'the most human-like decision-maker' AI. The last command I was given was to bring what they found - you, BrandoBot - back online, evaluate you, and launch the Seekers."
+
 				]
 
 intro_story_button = ["BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response",
@@ -62,7 +52,7 @@ intro_story_button = ["BrandoBot Response","BrandoBot Response","BrandoBot Respo
 						"BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response","BrandoBot Response"]
 
 filterResponses = ['/u', 'sub', '/r', 'reddit', ' r ', ' u ', 'upvote', 'downvote', 'up vote', 'down vote',
-						'ban', 'mod', 'moderator', 'OP', 'thread', 'post', 'subreddit', 'fag', 'fuck', 'shit', 'gay', 'nigger', 'autistic']
+						'ban', 'muslim', 'mod', 'moderator', 'OP', 'thread', 'post', 'subreddit', 'fag', 'fuck', 'shit', 'gay', 'nigger', 'rape', 'raped', 'autistic']
 @app.route('/game/')
 def hello():
     return render_template('html.html')
@@ -156,7 +146,7 @@ tokenizer = GPT2Tokenizer.from_pretrained('microsoft/DialoGPT-medium')
 
 model = GPT2LMHeadModel(GPT2Config(n_ctx=1024, n_embd=1024, n_layer=24, n_head=16))
 # model = GPT2LMHeadModel(GPT2Config())
-model.load_state_dict(torch.load("/home/ubuntu/models/checkpoint-2500/pytorch_model.bin"))
+model.load_state_dict(torch.load("E:/Root/Models/from_aws/Sarc_T4_2/checkpoint-2500/pytorch_model.bin"))
 optimizer = AdamW(model.parameters())
 device = torch.device("cuda")
 model.eval()	
