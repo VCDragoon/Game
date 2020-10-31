@@ -533,7 +533,9 @@
           var changeText = document.getElementById("dataText-" + introState).textContent
           console.log(changeText)
 
-          $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
+          document.getElementById("scrollToMe").scrollIntoView({ block: "end", behavior: "smooth" });
+              var y = $(window).scrollTop();  //your current y position on the page
+              $(window).scrollTop(y+40);
           
           setTimeout(function () {
 
@@ -541,7 +543,7 @@
               // document
               // .getElementById("chatbox")
               // .scrollIntoView({ block: "end", behavior: "smooth" });
-              $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
+              // $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
               // $("#story-button").fadeIn(2000);
               // storyButt.scrollIntoView({ block: "end", behavior: "smooth" });
                   setTimeout(function(){
