@@ -480,22 +480,32 @@
     }
 }
     var introState = 0;
-    function get_response() {
-      $("#story-button").fadeOut(10);
-      // document.getElementById("story-button").hidden = true;
-      introState++;
 
+
+    // Story Responses
+
+    function get_response() {
+
+      $("#story-button").fadeOut(10);
+      introState++;
 
       if (introState > 24) {
         $("#textInput").fadeIn(1500);
         gamemode = 1;
-      } else {
+      }
+
         $.get("/intro", { introState: introState }).done(function (introData) {
           var userInput = document.getElementById('textInput');
           var rawText = "";
 
           $("#chatbox").append(typingIndicator)
-            $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
+          $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
+
+        document
+        .getElementById("chatbox")
+        .scrollIntoView({ block: "end", behavior: "smooth" });
+
+
           var storyButt = document.getElementById("scrollToMe");
           $.get("/prediction", {
             gamemode: gamemode, userText: rawText + " " + currentBotText, historyOn: false, historyLength: 2,
@@ -530,11 +540,12 @@
                   setTimeout(function(){
                       get_next_story_button();
                         $("#story-button").fadeIn(10);
-                          setTimeout(function() {
-                              document.getElementById("scrollToMe").scrollIntoView({ block: "end", behavior: "smooth" });
-                              var y = $(window).scrollTop();  //your current y position on the page
-                              $(window).scrollTop(y+20);
-                        },500);
+                        document
+                        .getElementById("chatbox")
+                        .scrollIntoView({ block: "end", behavior: "smooth" });
+                        document.getElementById("scrollToMe").scrollIntoView({ block: "end", behavior: "smooth" });
+                        var y = $(window).scrollTop();  //your current y position on the page
+                        $(window).scrollTop(y+20);
               }, 500 + (storyLen * 10));
               
             }, 2500 + (dataLen * 10))
@@ -561,7 +572,6 @@
 
         });
 
-      }
     }
     function append_chats(data) {
       console.log("appending data... " + data)
@@ -595,6 +605,8 @@
         $('#ssInfo').append(data)
       })
     };
+
+// GET BOT RESPONSE - INTERACTIVE
     function getBotResponse() {
       var rawText = $("#textInput").val();
       //  var userInput = document.getElementById('textInput');
