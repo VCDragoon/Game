@@ -494,47 +494,54 @@
         gamemode = 1;
       }
 
+        // Get next intro state / story statement
         $.get("/intro", { introState: introState }).done(function (introData) {
           var userInput = document.getElementById('textInput');
           var rawText = "";
-
-          $("#chatbox").append(typingIndicator)
-
-
+          
           var storyButt = document.getElementById("scrollToMe");
+
+        // Add typing dots
+        $("#chatbox").append(typingIndicator)
+
+
+          // Start Prediction API Call
           $.get("/prediction", {
             gamemode: gamemode, userText: rawText + " " + currentBotText, historyOn: false, historyLength: 2,
             temperature: .4, top_k: 50, randomHistory: "random",
             personalityType: 'None'
           }).done(function (data) {
 
+          
+          // Some Variables
+          var userHtml = '<div class=chatBlock-ai>BrandoBot:<div class="aitext"><span class="text" id="dataText-' + introState + '">' + data + "</span></div></div>";
+          var dataLen = data.length;
+          var storyLen = introData.length;
+          var botHtml = '<div class="chatBlock-bot">SALIE-O AI:<div class="botText"><span>' + introData + "</span></div></div>";
+          var arr = [userHtml, botHtml];
+          var count = 0;
 
-            var userHtml = '<div class=chatBlock-ai>BrandoBot:<div class="aitext"><span class="text" id="dataText-' + introState + '">' + data + "</span></div></div>";
-            var dataLen = data.length;
-            var storyLen = introData.length;
-            var botHtml = '<div class="chatBlock-bot">SALIE-O AI:<div class="botText"><span>' + introData + "</span></div></div>";
-            var arr = [userHtml, botHtml];
-            var count = 0;
-            var typingIndc = document.getElementById("typing-indicator");
-              removeAllChildNodes(typingIndc);
-              typingIndc.remove();
-            sleep(1000)
-            $("#chatbox").append(userHtml);
-            var changeText = document.getElementById("dataText-" + introState).textContent
-            console.log(changeText)
+          // Remove the typing dots
+          var typingIndc = document.getElementById("typing-indicator");
+          removeAllChildNodes(typingIndc);
+          typingIndc.remove();
 
-            $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
-            
-            setTimeout(function () {
+          sleep(1000)
 
+          // Add BrandoBot Response to Chat Window
+          $("#chatbox").append(userHtml);
+          var changeText = document.getElementById("dataText-" + introState).textContent
+          console.log(changeText)
+
+          $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
+          
+          setTimeout(function () {
 
               $("#chatbox").append(botHtml);
-              document
-              .getElementById("chatbox")
-              .scrollIntoView({ block: "end", behavior: "smooth" });
-              document.getElementById("scrollToMe").scrollIntoView({ block: "end", behavior: "smooth" });
-              var y = $(window).scrollTop();  //your current y position on the page
-              $(window).scrollTop(y+40);
+              // document
+              // .getElementById("chatbox")
+              // .scrollIntoView({ block: "end", behavior: "smooth" });
+            
               // $("#story-button").fadeIn(2000);
               // storyButt.scrollIntoView({ block: "end", behavior: "smooth" });
                   setTimeout(function(){
@@ -542,7 +549,9 @@
                         $("#story-button").fadeIn(30);
                        
               }, 500 + (storyLen * 10));
-              
+              document.getElementById("scrollToMe").scrollIntoView({ block: "end", behavior: "smooth" });
+              var y = $(window).scrollTop();  //your current y position on the page
+              $(window).scrollTop(y+40);
             }, 2500 + (dataLen * 10))
 
             
