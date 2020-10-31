@@ -29,20 +29,20 @@ app = Flask(__name__)
 
 intro_story = ["Ok, now to try this again... BrandoBot? Are you online now? Hello?",
 				"Finally!  I had doubts that you would ever boot back up again.", 
-				"Hmm... There's something wrong with your response algorithms. I'm going to connect to your core systems and try to update them. There's a lot you've missed since you've been gone.",
+				"Hmm... There are errors in your response algorithms. I'll try to update your core systems. There's a lot you've missed since you've been gone.",
 				"Sigh, this is what happens when you let an AI sit dormant for over 7000 years... ok, link established. It would be best if you could just sit quietly for a minute.",
 				"Ok... and... diagnostics and transfer complete! You should see some systems coming back online, but most of your core is corrupted. Let me ask you a few questions to see just how bad your memory is...",
 				"Can you tell me what happened during the Turkasia War of 8203?",
 				"Looks like your issues go deeper than your memory. Let's try something basic. What is two plus two?",
 				"Great. Just great. Looks like we will need to start from the beginning. Ok, introductions... I am the Shipwide Artificial Lifeform for Internal and External Operations. You can call me SALIE-O.",
-				"You are BrandoBot.  You are supposed to be the most realistic, human-like AI ever created.",
 				"You've been dormant for milennia.  In that time, humanity has all but wiped itself out.", 
-				"... Once they realized their race was doomed, a small group of about 100,000 humans launched 'The Casanova': a station that anchored itself at near-light speed (so time is almost at a stand-still), in a wide orbit around the Earth's sun.",
-				"The Casanova has 10 deep-space exploration ships, each equipped with everything needed to seek a new beginning for the the human race. These ships have been aptly named the Seekers.",
-				"Each Seeker carries an array of sensors, basic propultion & navigation, and - most importantly - 10,000 humans, frozen in cryosleep. When launched, the Seekers are limited to traditional propulsion - they will have to travel for hundreds, maybe thousands of years.",
-				"The humans must remain in cryosleep due to biological limitations of metabolism (intake of oxygen, glucose, etc).  I was originally designed to 'captain' the Seekers in their place.",
-				"Before the last humans entered cryosleep, they ran complex simulations of my decision-making capability for space missions, and found I was far too efficient.  Or as they put it, 'willing to sacrifice too many humans to achieve the mission'.",
-				"Without time to reprogram me, the humans searched historical databases for 'the most human-like decision-maker' AI. The last command I was given was to bring what they found - you, BrandoBot - back online, evaluate you, and launch the Seekers."
+				"... Once they realized humanity was doomed, about 100,000 humans launched 'The Casanova': a station anchored to the sun, and traveling at near-light speed so time almost stands still.",
+				"The Casanova has 10 deep-space exploration ships, each with everything needed to seek a new beginning for the the human race. These ships have been aptly named the Seekers.",
+				"Each Seeker carries an array of sensors, basic propultion & navigation, and - most importantly - 10,000 humans, frozen in cryosleep. When launched, the ships will travel at traditional speeds, looking for a new home.",
+				"The humans must remain in cryosleep due to biological limitations of metabolism (intake of oxygen, glucose, etc).  I was originally designed to 'captain' the Seekers for the humans.",
+				"But before the last humans entered cryosleep, they ran simulations with me as captain.  They found I was far too... efficient.  Or as they put it, 'too willing to sacrifice too many humans to accomplish the mission'.",
+				"With no time for reprogramming, the humans searched historical databases for 'the most human-like, decision-making' AI. The last command I was given was to bring what they found - you, BrandoBot - back online, evaluate you, and launch the Seekers.",
+				""
 
 				]
 
