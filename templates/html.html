@@ -535,7 +535,9 @@
           console.log(changeText)
 
           $("#chatbox")[0].scrollIntoView({ block: "end", behavior: "smooth" });
-          
+          document.getElementById("scrollToMe").scrollIntoView({ block: "end", behavior: "smooth" });
+              var y = $(window).scrollTop();  //your current y position on the page
+              $(window).scrollTop(y+40);
           setTimeout(function () {
 
               $("#chatbox").append(botHtml);
