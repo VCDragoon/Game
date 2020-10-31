@@ -146,7 +146,10 @@ tokenizer = GPT2Tokenizer.from_pretrained('microsoft/DialoGPT-medium')
 
 model = GPT2LMHeadModel(GPT2Config(n_ctx=1024, n_embd=1024, n_layer=24, n_head=16))
 # model = GPT2LMHeadModel(GPT2Config())
-model.load_state_dict(torch.load("E:/Root/Models/from_aws/Sarc_T4_2/checkpoint-2500/pytorch_model.bin"))
+try:
+	model.load_state_dict(torch.load("E:/Root/Models/from_aws/Sarc_T4_2/checkpoint-2500/pytorch_model.bin"))
+except:
+	model.load_state_dict(torch.load("/home/ubuntu/checkpoint-2500/pytorch_model.bin"))
 optimizer = AdamW(model.parameters())
 device = torch.device("cuda")
 model.eval()	
@@ -476,7 +479,7 @@ def gameloop():
 #         return redirect(request.url.replace('http://', 'https://'), code=301)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port='5050', debug=True)
+    app.run(host='0.0.0.0', port='80')
 
 # DISABLING SSL UNTIL HOSTGATOR VERIFIES
 # , ssl_context=('/etc/letsencrypt/live/brandobot.com/fullchain.pem', '/etc/letsencrypt/live/brandobot.com/privkey.pem'))
