@@ -504,7 +504,7 @@
         // Add typing dots
         $("#chatbox").append(typingIndicator)
           var scrollToChat = document.getElementById("chatbox");
-
+          scrollToChat.scrollIntoView(false)
           // Start Prediction API Call
           $.get("/prediction", {
             gamemode: gamemode, userText: rawText + " " + currentBotText, historyOn: false, historyLength: 2,
